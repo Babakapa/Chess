@@ -1,4 +1,4 @@
-package tetris;
+package chess;
 
 
 
@@ -55,8 +55,11 @@ public Listener(int a, int b){
         nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
         processing();
 
-    }else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty())
+    }else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED)
        clearPossibleVariants();
+    else if(chess[a][b].getBackground()==Color.RED){
+
+    }
 else if(nameOfTheFigure!=null){
     chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
     setNewXAndY(nameOfTheFigure, a, b);

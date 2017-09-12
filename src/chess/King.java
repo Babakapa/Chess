@@ -1,9 +1,7 @@
-package tetris;
+package chess;
 
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Асус on 14.06.2017.
@@ -53,7 +51,11 @@ if(x!=i || y!=j)
                     }
 
         }
-    }
+
+
+
+
+}
 
 }
 

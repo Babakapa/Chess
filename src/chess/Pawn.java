@@ -1,4 +1,4 @@
-package tetris;
+package chess;
 
 
 import java.util.LinkedList;
