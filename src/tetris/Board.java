@@ -13,16 +13,20 @@ import java.util.LinkedList;
 public class Board extends JFrame{
 private JButton [][] chess  = new JButton[8][8];
 private King king = new King(4,0);
+private Pawn pawn1 = new Pawn(4,1);
+
+
+
+
 private String nameOfTheFigure;
 protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
   private LinkedList<Color> tempList = new LinkedList<>();
-
 private int i = 0;
 private int j = 0;
-private int tempX;
-private int tempY;
-int k = 0;
-private Object object = new Object();
+
+
+
+
     public Board() {
 setLayout(new GridLayout(8,8));
 for(i = 0;i < chess.length;i++)
@@ -47,17 +51,15 @@ public Listener(int a, int b){
         @Override
         public void actionPerformed(ActionEvent e) {
     if(chess[a][b].getIcon()!=null) {
+
         nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
         processing();
 
-    }else if(chess[a][b].getBackground()!=Color.blue)
+    }else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty())
        clearPossibleVariants();
-else{
-
-    System.out.print(nameOfTheFigure);
+else if(nameOfTheFigure!=null){
     chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
-
-
+    setNewXAndY(nameOfTheFigure, a, b);
 clearPossibleVariants();
     }
 
@@ -66,13 +68,29 @@ clearPossibleVariants();
 }
 
 
-}
+
+
+    }
+    private void setNewXAndY(String nameOfTheFigure, int a, int b) {
+        if(nameOfTheFigure=="BlackKing"){
+
+            chess[king.getY()][king.getX()].setIcon(null);
+            king.setXAndY(b,a);
+        }
+
+
+
+
+
+    }
 
     private void clearPossibleVariants() {
         for(int i = 0;i<list.get(0).size();i++){
             chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(tempList.get(i));
-    }
 
+
+    }
+        tempList.clear();
 }
 
 
@@ -96,9 +114,9 @@ clearPossibleVariants();
     }
 
     private void processing() {
-        if(nameOfTheFigure=="BlackKing")
-list = king.moving();
-
+        if(nameOfTheFigure=="BlackKing") {
+            list = king.moving();
+        }
 
 
 showPossibleVariants();
@@ -107,6 +125,7 @@ showPossibleVariants();
     }
 
     private void showPossibleVariants() {
+
 for(int i = 0;i<list.get(0).size();i++){
 tempList.add(chess[list.get(1).get(i)][list.get(0).get(i)].getBackground());
 chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(Color.blue);

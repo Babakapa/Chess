@@ -13,14 +13,21 @@ final String k = "src\\Images\\";
         switch (s){
             case k+"moderator_male-96.png":return "BlackKing";
 
-
-
-
-
-
 default:return null;
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
