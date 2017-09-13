@@ -13,10 +13,12 @@ setXAndY(x,y);
     @Override
     public void checkForBorders() {
     if(firstStep){
-        listX.add(x);
-        listX.add(x);
-        listY.add(y + 1);
-        listY.add(y + 2);
+        if(Board.checkIcon(x,y + 1)==null && Board.checkIcon(x, y+ 2)==null) {
+            listX.add(x);
+            listX.add(x);
+            listY.add(y + 1);
+            listY.add(y + 2);
+        }
     }
 else{
         if(y < 7) {

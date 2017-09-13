@@ -11,10 +11,13 @@ import java.util.LinkedList;
 
 
 public class Board extends JFrame{
-private JButton [][] chess  = new JButton[8][8];
+private static JButton [][] chess  = new JButton[8][8];
 private King king = new King(4,0);
     private Pawn pawn0 = new Pawn(0,1);
     private Pawn pawn1 = new Pawn(1,1);
+
+
+
     private Pawn pawn2 = new Pawn(2,1);
     private Pawn pawn3 = new Pawn(3,1);
     private Pawn pawn4 = new Pawn(4,1);
@@ -205,15 +208,24 @@ clearPossibleVariants();
     private void showPossibleVariants() {
 
     for (int i = 0; i < list.get(0).size(); i++) {
-        tempList.add(chess[list.get(1).get(i)][list.get(0).get(i)].getBackground());
-        chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(Color.blue);
+        if(chess[list.get(1).get(i)][list.get(0).get(i)].getIcon() == null) {
+            tempList.add(chess[list.get(1).get(i)][list.get(0).get(i)].getBackground());
+            chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(Color.blue);
+        }
+        else{
+            list.get(1).remove(i);
+            list.get(0).remove(i);
+            i--;
+        }
     }
 
 
 
 
     }
-
+public static Icon checkIcon(int a, int b){
+        return chess[b][a].getIcon();
+    }
 
 }
 

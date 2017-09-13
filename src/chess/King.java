@@ -1,7 +1,6 @@
 package chess;
 
 
-import java.util.LinkedList;
 
 /**
  * Created by Асус on 14.06.2017.
