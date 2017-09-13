@@ -11,33 +11,9 @@ public class King extends ChessPropreties {
         setXAndY(x,y);
     }
 
-    public void setXAndY(int x , int y) {
-        this.x = x;
-        this.y = y;
-    }
-    public int getX(){
-        return x;
-    }
-public int getY(){
-        return y;
-}
-
-    @Override
-    public LinkedList moving() {
-
-        if(listY!=null || listX!=null) {
-            listY.clear();
-            listX.clear();
-        }
-
-            checkForBorders();
-            listForSteps.add(listX);
-            listForSteps.add(listY);
 
 
 
-return listForSteps;
-    }
 
     @Override
     public void checkForBorders() {

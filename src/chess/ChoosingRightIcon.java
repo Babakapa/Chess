@@ -8,6 +8,26 @@ public class ChoosingRightIcon {
         switch (s) {
             case "BlackKing":
                 return new ImageIcon("src\\Images\\moderator_male-96.png");
+            case "BlackPawn0":
+                return new ImageIcon("src\\Images\\Pawn-icon0.png");
+            case "BlackPawn1":
+                return new ImageIcon("src\\Images\\Pawn-icon1.png");
+            case "BlackPawn2":
+                return new ImageIcon("src\\Images\\Pawn-icon2.png");
+            case "BlackPawn3":
+                return new ImageIcon("src\\Images\\Pawn-icon3.png");
+            case "BlackPawn4":
+                return new ImageIcon("src\\Images\\Pawn-icon4.png");
+            case "BlackPawn5":
+                return new ImageIcon("src\\Images\\Pawn-icon5.png");
+            case "BlackPawn6":
+                return new ImageIcon("src\\Images\\Pawn-icon6.png");
+            case "BlackPawn7":
+                return new ImageIcon("src\\Images\\Pawn-icon7.png");
+
+
+
+
                 default:return null;
         }
     }
