@@ -28,6 +28,8 @@ private King king = new King(4,0);
     private Horse blackHorse1 = new Horse(1,0);
     private Horse blackHorse2 = new Horse(6,0);
 
+private Rook blackRock1 = new Rook(0,0);
+    private Rook blackRock2 = new Rook(7,0);
 
 
 private String nameOfTheFigure;
@@ -139,6 +141,15 @@ clearPossibleVariants();
             chess[blackHorse2.getY()][blackHorse2.getX()].setIcon(null);
             blackHorse2.setXAndY(b,a);
         }
+        if(nameOfTheFigure=="BlackRock1"){
+            chess[blackRock1.getY()][blackRock1.getX()].setIcon(null);
+            blackRock1.setXAndY(b,a);
+        }
+        if(nameOfTheFigure=="BlackRock2"){
+            chess[blackRock2.getY()][blackRock2.getX()].setIcon(null);
+            blackRock2.setXAndY(b,a);
+        }
+
 
 
     }
@@ -181,6 +192,10 @@ clearPossibleVariants();
         chess[0][1].setIcon(new ImageIcon("src\\Images\\Horse1.png"));
         chess[0][6].setIcon(new ImageIcon("src\\Images\\Horse2.png"));
 
+        chess[0][0].setIcon(new ImageIcon("src\\Images\\rock1.png"));
+        chess[0][7].setIcon(new ImageIcon("src\\Images\\rock2.png"));
+
+
     }
 
     private void processing() {
@@ -216,6 +231,12 @@ clearPossibleVariants();
         }
         if(nameOfTheFigure=="BlackHorse2"){
             list = blackHorse2.moving();
+        }
+        if(nameOfTheFigure=="BlackRock1"){
+            list = blackRock1.moving();
+        }
+        if(nameOfTheFigure=="BlackRock2"){
+            list = blackRock2.moving();
         }
 
 
