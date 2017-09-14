@@ -28,10 +28,10 @@ public class ChoosingRightIcon {
                 return new ImageIcon("src\\Images\\Horse1.png");
             case "BlackHorse2":
                 return new ImageIcon("src\\Images\\Horse2.png");
-            case "BlackRock1":
-                return new ImageIcon("src\\Images\\rock1.png");
-            case "BlckRock2":
-                return new ImageIcon("src\\Images\\rock2.png");
+            case "BlackRook1":
+                return new ImageIcon("src\\Images\\rook1.png");
+            case "BlackRook2":
+                return new ImageIcon("src\\Images\\rook2.png");
 
 
 
