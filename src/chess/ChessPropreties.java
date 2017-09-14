@@ -1,14 +1,5 @@
 package chess;
-
-
-
-
 import java.util.LinkedList;
-
-
-/**
- * Created by Асус on 11.09.2017.
- */
 public abstract class ChessPropreties  {
 
     protected int x;

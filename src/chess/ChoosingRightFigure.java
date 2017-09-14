@@ -20,6 +20,8 @@ final String k = "src\\Images\\";
             case k+"Pawn-icon5.png": return "BlackPawn5";
             case k+"Pawn-icon6.png": return "BlackPawn6";
             case k+"Pawn-icon7.png": return "BlackPawn7";
+            case k+"Horse1.png": return "BlackHorse1";
+            case k+"Horse2.png": return "BlackHorse2";
 
 
 default:return null;

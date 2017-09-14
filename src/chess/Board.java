@@ -25,6 +25,8 @@ private King king = new King(4,0);
     private Pawn pawn6 = new Pawn(6,1);
     private Pawn pawn7 = new Pawn(7,1);
 
+    private Horse blackHorse1 = new Horse(1,0);
+    private Horse blackHorse2 = new Horse(6,0);
 
 
 
@@ -129,6 +131,15 @@ clearPossibleVariants();
             pawn7.setXAndY(b,a);
             pawn7.setFirstStep();
         }
+        if(nameOfTheFigure=="BlackHorse1"){
+            chess[blackHorse1.getY()][blackHorse1.getX()].setIcon(null);
+            blackHorse1.setXAndY(b,a);
+        }
+        if(nameOfTheFigure=="BlackHorse2"){
+            chess[blackHorse2.getY()][blackHorse2.getX()].setIcon(null);
+            blackHorse2.setXAndY(b,a);
+        }
+
 
     }
 
@@ -167,6 +178,9 @@ clearPossibleVariants();
         chess[1][6].setIcon(new ImageIcon("src\\Images\\Pawn-icon6.png"));
         chess[1][7].setIcon(new ImageIcon("src\\Images\\Pawn-icon7.png"));
 
+        chess[0][1].setIcon(new ImageIcon("src\\Images\\Horse1.png"));
+        chess[0][6].setIcon(new ImageIcon("src\\Images\\Horse2.png"));
+
     }
 
     private void processing() {
@@ -196,6 +210,12 @@ clearPossibleVariants();
         }
         if(nameOfTheFigure=="BlackPawn7"){
             list = pawn7.moving();
+        }
+        if(nameOfTheFigure=="BlackHorse1"){
+            list = blackHorse1.moving();
+        }
+        if(nameOfTheFigure=="BlackHorse2"){
+            list = blackHorse2.moving();
         }
 
 
