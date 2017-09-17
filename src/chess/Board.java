@@ -31,6 +31,9 @@ private King king = new King(4,0);
 private Rook blackRook1 = new Rook(0,0);
     private Rook blackRook2 = new Rook(7,0);
 
+    private Elephant blackElephant1 = new Elephant(2,0);
+    private Elephant blackElephant2 = new Elephant(5,0);
+
 
 private String nameOfTheFigure;
 protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
@@ -149,6 +152,16 @@ clearPossibleVariants();
             chess[blackRook2.getY()][blackRook2.getX()].setIcon(null);
             blackRook2.setXAndY(b,a);
         }
+        if(nameOfTheFigure=="BlackElephant1"){
+            chess[blackElephant1.getY()][blackElephant1.getX()].setIcon(null);
+            blackElephant1.setXAndY(b,a);
+        }
+
+        if(nameOfTheFigure=="BlackElephant2"){
+            chess[blackElephant2.getY()][blackElephant2.getX()].setIcon(null);
+            blackElephant2.setXAndY(b,a);
+        }
+
 
 
 
@@ -195,6 +208,9 @@ clearPossibleVariants();
         chess[0][0].setIcon(new ImageIcon("src\\Images\\rook1.png"));
         chess[0][7].setIcon(new ImageIcon("src\\Images\\rook2.png"));
 
+        chess[0][2].setIcon(new ImageIcon("src\\Images\\elephant1.png"));
+        chess[0][5].setIcon(new ImageIcon("src\\Images\\elephant2.png"));
+
 
     }
 
@@ -237,6 +253,12 @@ clearPossibleVariants();
         }
         if(nameOfTheFigure=="BlackRook2"){
             list = blackRook2.moving();
+        }
+        if(nameOfTheFigure=="BlackElephant1"){
+            list = blackElephant1.moving();
+        }
+        if(nameOfTheFigure=="BlackElephant2"){
+            list = blackElephant2.moving();
         }
 
 

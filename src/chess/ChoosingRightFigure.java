@@ -24,6 +24,8 @@ final String k = "src\\Images\\";
             case k+"Horse2.png": return "BlackHorse2";
             case k+"rook1.png": return "BlackRook1";
             case k+"rook2.png": return "BlackRook2";
+            case k+"elephant1.png": return "BlackElephant1";
+            case k+"elephant2.png": return "BlackElephant2";
 
 
 default:return null;
