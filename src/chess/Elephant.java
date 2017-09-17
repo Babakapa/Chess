@@ -2,8 +2,8 @@ package chess;
 
 
 public class Elephant extends ChessPropreties implements DiagonalMove{
-    private int i = 0;
-    private int j = 0;
+    private int i;
+    private int j;
 public Elephant(int x, int y){
     setXAndY(x,y);
 }

@@ -25,6 +25,7 @@ private King king = new King(4,0);
     private Pawn pawn6 = new Pawn(6,1);
     private Pawn pawn7 = new Pawn(7,1);
 
+    
     private Horse blackHorse1 = new Horse(1,0);
     private Horse blackHorse2 = new Horse(6,0);
 
@@ -33,6 +34,8 @@ private Rook blackRook1 = new Rook(0,0);
 
     private Elephant blackElephant1 = new Elephant(2,0);
     private Elephant blackElephant2 = new Elephant(5,0);
+
+    private Queen blackQueen = new Queen(3,0);
 
 
 private String nameOfTheFigure;
@@ -161,6 +164,10 @@ clearPossibleVariants();
             chess[blackElephant2.getY()][blackElephant2.getX()].setIcon(null);
             blackElephant2.setXAndY(b,a);
         }
+        if(nameOfTheFigure=="BlackQueen"){
+            chess[blackQueen.getY()][blackQueen.getX()].setIcon(null);
+            blackQueen.setXAndY(b,a);
+        }
 
 
 
@@ -211,6 +218,8 @@ clearPossibleVariants();
         chess[0][2].setIcon(new ImageIcon("src\\Images\\elephant1.png"));
         chess[0][5].setIcon(new ImageIcon("src\\Images\\elephant2.png"));
 
+        chess[0][3].setIcon(new ImageIcon("src\\Images\\blackqueen.png"));
+
 
     }
 
@@ -260,7 +269,9 @@ clearPossibleVariants();
         if(nameOfTheFigure=="BlackElephant2"){
             list = blackElephant2.moving();
         }
-
+        if(nameOfTheFigure=="BlackQueen"){
+            list = blackQueen.moving();
+        }
 
 
         showPossibleVariants();
