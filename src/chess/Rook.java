@@ -8,11 +8,11 @@ public Rook(int x, int y){
     setXAndY(x,y);
 }
     @Override
-    public void checkForBorders() {
-    checkLeft();
-    checkRight();
-    checkUp();
-    checkDown();
+    public void checkForBorders(boolean bp) {
+    checkLeft(bp);
+    checkRight(bp);
+    checkUp(bp);
+    checkDown(bp);
 
 
 
@@ -23,48 +23,60 @@ public Rook(int x, int y){
     }
 
     @Override
-    public void checkUp() {
+    public void checkUp(boolean bp) {
         for (int i = y + 1; i < 8; i++) {
             if (Board.checkIcon(x, i) == null) {
                 listX.add(x);
                 listY.add(i);
             }
-            else break;
+            else {
+                checkingForOponnets(x, i, bp);
+                break;
+            }
         }
     }
 
     @Override
-    public void checkDown() {
+    public void checkDown(boolean bp) {
 
         for (int i = y - 1; i > -1; i--) {
             if (Board.checkIcon(x, i) == null) {
                 listX.add(x);
                 listY.add(i);
             }
-            else break;
+            else {
+                checkingForOponnets(x, i, bp);
+                break;
+            }
         }
 
     }
 
     @Override
-    public void checkRight() {
+    public void checkRight(boolean bp) {
         for (int i = x + 1; i < 8; i++) {
             if (Board.checkIcon(i, y) == null) {
                 listX.add(i);
                 listY.add(y);
             }
-            else break;
+            else {
+                checkingForOponnets(i, y, bp);
+                break;
+            }
         }
     }
 
     @Override
-    public void checkLeft() {
+    public void checkLeft(boolean bp) {
         for (int i = x - 1; i > -1; i--) {
             if (Board.checkIcon(i, y) == null) {
                 listX.add(i);
                 listY.add(y);
             }
-            else break;
+            else {
+                checkingForOponnets(i, y, bp);
+                break;
+            }
         }
 
     }

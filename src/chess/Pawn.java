@@ -11,7 +11,7 @@ setXAndY(x,y);
 
 
     @Override
-    public void checkForBorders() {
+    public void checkForBorders(boolean bp) {
     if(firstStep){
         if(Board.checkIcon(x,y + 1)==null) {
 
@@ -30,6 +30,11 @@ else{
             listY.add(y + 1);
         }
     }
+    if(x+1<8 && y+1<8 && Board.checkIcon(x+1,y+1)!=null)
+        checkingForOponnets(x+1,y+1,bp);
+    if(x-1>-1 && y+1<8 && Board.checkIcon(x-1,y+1)!=null)
+        checkingForOponnets(x-1,y+1,bp);
+
 
 }
 

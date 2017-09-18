@@ -10,107 +10,132 @@ private int i,j;
         setXAndY(x,y);
     }
     @Override
-    public void checkForBorders() {
-        checkDownRight();
-        checkDownLeft();
-        checkUpRight();
-        checkUpLeft();
-        checkDown();
-checkLeft();
-checkRight();
-checkUp();
+    public void checkForBorders(boolean bp) {
+        checkDownRight(bp);
+        checkDownLeft(bp);
+        checkUpRight(bp);
+        checkUpLeft(bp);
+        checkDown(bp);
+checkLeft(bp);
+checkRight(bp);
+checkUp(bp);
     }
     @Override
-    public void checkUpRight() {
+    public void checkUpRight(boolean bp) {
         j = y + 1;
 
         for (i = x + 1; i < 8 && j < 8; i++, j++) {
             if (Board.checkIcon(i, j) == null) {
                 listX.add(i);
                 listY.add(j);
-            } else break;
+            }
+            else{
+                checkingForOponnets(i, j, bp);
+                break;
+            }
         }
     }
     @Override
-    public void checkUpLeft() {
+    public void checkUpLeft(boolean bp) {
         j = y - 1;
         for(i = x + 1; i < 8 && j > -1 ; i++, j--) {
             if(Board.checkIcon(i,j)==null){
                 listX.add(i);
                 listY.add(j);
             }
-            else break;
+            else{
+                checkingForOponnets(i, j, bp);
+                break;
+            }
         }
     }
 
     @Override
-    public void checkDownRight() {
+    public void checkDownRight(boolean bp) {
         j = y + 1;
         for(i = x - 1; i > -1 && j < 8 ; i--, j++) {
             if(Board.checkIcon(i,j)==null){
                 listX.add(i);
                 listY.add(j);
             }
-            else break;
+            else{
+                checkingForOponnets(i, j, bp);
+                break;
+            }
         }
 
     }
 
     @Override
-    public void checkDownLeft() {
+    public void checkDownLeft(boolean bp) {
         j = y - 1;
         for(i = x - 1; i > -1 && j > -1 ; i--, j--) {
             if(Board.checkIcon(i,j)==null){
                 listX.add(i);
                 listY.add(j);
             }
-            else break;
+            else{
+                checkingForOponnets(i, j, bp);
+                break;
+            }
         }
 
     }
 
 
     @Override
-    public void checkUp() {
+    public void checkUp(boolean bp) {
         for (int i = y + 1; i < 8; i++) {
             if (Board.checkIcon(x, i) == null) {
                 listX.add(x);
                 listY.add(i);
             }
-            else break;
+            else {
+                checkingForOponnets(x,i,bp);
+                break;
+            }
         }
     }
 
     @Override
-    public void checkDown() {
+    public void checkDown(boolean bp) {
         for (int i = y - 1; i > -1; i--) {
             if (Board.checkIcon(x, i) == null) {
                 listX.add(x);
                 listY.add(i);
             }
-            else break;
+            else {
+                checkingForOponnets(x, i, bp);
+                break;
+            }
         }
     }
 
     @Override
-    public void checkRight() {
+    public void checkRight(boolean bp) {
         for (int i = x + 1; i < 8; i++) {
             if (Board.checkIcon(i, y) == null) {
                 listX.add(i);
                 listY.add(y);
             }
-            else break;
+            else {
+                checkingForOponnets(i, y, bp);
+                break;
+            }
         }
     }
 
     @Override
-    public void checkLeft() {
+    public void checkLeft(boolean bp) {
         for (int i = x - 1; i > -1; i--) {
             if (Board.checkIcon(i, y) == null) {
                 listX.add(i);
                 listY.add(y);
             }
-            else break;
+            else {
+                checkingForOponnets(i, y, bp);
+                break;
+            }
         }
     }
 }

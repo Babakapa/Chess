@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.SplittableRandom;
 
 
 public class Board extends JFrame{
@@ -64,6 +66,7 @@ private Rook blackRook1 = new Rook(0,0);
     private String nameOfTheFigure;
 protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
   private LinkedList<Color> tempList = new LinkedList<>();
+
 private int i = 0;
 private int j = 0;
 
@@ -93,14 +96,20 @@ public Listener(int a, int b){
 }
         @Override
         public void actionPerformed(ActionEvent e) {
-    if(chess[a][b].getIcon()!=null) {
+
+            if(chess[a][b].getBackground()==Color.RED) {
+                chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
+                setNewXAndY(nameOfTheFigure, a, b);
+                clearPossibleVariants();
+
+            }
+     else if(chess[a][b].getIcon()!=null) {
 clearPossibleVariants();
         nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
         processing();
 
-    }else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED)
+    }else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED){
        clearPossibleVariants();
-    else if(chess[a][b].getBackground()==Color.RED){
 
     }
 else if(nameOfTheFigure!=null){
@@ -274,14 +283,7 @@ clearPossibleVariants();
 
     }
 
-    private void clearPossibleVariants() {
-        if(!tempList.isEmpty()) {
-            for (int i = 0; i < list.get(0).size(); i++) {
-                chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(tempList.get(i));
-            }
-            tempList.clear();
-        }
-}
+
 
 
     private void makeField() {
@@ -348,104 +350,104 @@ clearPossibleVariants();
 
     private void processing() {
         if(nameOfTheFigure=="BlackKing") {
-            list = king.moving();
+            list = king.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn0"){
-            list = pawn0.moving();
+            list = pawn0.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn1"){
-            list = pawn1.moving();
+            list = pawn1.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn2"){
-            list = pawn2.moving();
+            list = pawn2.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn3"){
-            list = pawn3.moving();
+            list = pawn3.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn4"){
-            list = pawn4.moving();
+            list = pawn4.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn5"){
-            list = pawn5.moving();
+            list = pawn5.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn6"){
-            list = pawn6.moving();
+            list = pawn6.moving(false);
         }
         if(nameOfTheFigure=="BlackPawn7"){
-            list = pawn7.moving();
+            list = pawn7.moving(false);
         }
         if(nameOfTheFigure=="BlackHorse1"){
-            list = blackHorse1.moving();
+            list = blackHorse1.moving(false);
         }
         if(nameOfTheFigure=="BlackHorse2"){
-            list = blackHorse2.moving();
+            list = blackHorse2.moving(false);
         }
         if(nameOfTheFigure=="BlackRook1"){
-            list = blackRook1.moving();
+            list = blackRook1.moving(false);
         }
         if(nameOfTheFigure=="BlackRook2"){
-            list = blackRook2.moving();
+            list = blackRook2.moving(false);
         }
         if(nameOfTheFigure=="BlackElephant1"){
-            list = blackElephant1.moving();
+            list = blackElephant1.moving(false);
         }
         if(nameOfTheFigure=="BlackElephant2"){
-            list = blackElephant2.moving();
+            list = blackElephant2.moving(false);
         }
         if(nameOfTheFigure=="BlackQueen"){
-            list = blackQueen.moving();
+            list = blackQueen.moving(false);
         }
 
         //white
 
 
         if(nameOfTheFigure=="WhiteKing") {
-            list = whiteking.moving();
+            list = whiteking.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn0"){
-            list = whitepawn0.moving();
+            list = whitepawn0.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn1"){
-            list = whitepawn1.moving();
+            list = whitepawn1.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn2"){
-            list = whitepawn2.moving();
+            list = whitepawn2.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn3"){
-            list = whitepawn3.moving();
+            list = whitepawn3.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn4"){
-            list = whitepawn4.moving();
+            list = whitepawn4.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn5"){
-            list = whitepawn5.moving();
+            list = whitepawn5.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn6"){
-            list = whitepawn6.moving();
+            list = whitepawn6.moving(true);
         }
         if(nameOfTheFigure=="WhitePawn7"){
-            list = whitepawn7.moving();
+            list = whitepawn7.moving(true);
         }
         if(nameOfTheFigure=="WhiteHorse1"){
-            list = whiteHorse1.moving();
+            list = whiteHorse1.moving(true);
         }
         if(nameOfTheFigure=="WhiteHorse2"){
-            list = whiteHorse2.moving();
+            list = whiteHorse2.moving(true);
         }
         if(nameOfTheFigure=="WhiteRook1"){
-            list = whiteRook1.moving();
+            list = whiteRook1.moving(true);
         }
         if(nameOfTheFigure=="WhiteRook2"){
-            list = whiteRook2.moving();
+            list = whiteRook2.moving(true);
         }
         if(nameOfTheFigure=="WhiteElephant1"){
-            list = whiteElephant1.moving();
+            list = whiteElephant1.moving(true);
         }
         if(nameOfTheFigure=="WhiteElephant2"){
-            list = whiteElephant2.moving();
+            list = whiteElephant2.moving(true);
         }
         if(nameOfTheFigure=="WhiteQueen"){
-            list = whiteQueen.moving();
+            list = whiteQueen.moving(true);
         }
 
         showPossibleVariants();
@@ -466,10 +468,26 @@ clearPossibleVariants();
             i--;
         }
     }
+        for (int i = 0; i < list.get(2).size(); i++) {
+                tempList.add(chess[list.get(3).get(i)][list.get(2).get(i)].getBackground());
+                chess[list.get(3).get(i)][list.get(2).get(i)].setBackground(Color.red);
+            }
 
-
-
-
+    }
+    private void clearPossibleVariants() {
+int i, k = 0;
+        if(!tempList.isEmpty()) {
+            for (i = 0; i < list.get(0).size(); i++,k++) {
+                chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(tempList.get(i));
+            }
+            k = 0;
+           while(i < tempList.size()){
+               chess[list.get(3).get(k)][list.get(2).get(k)].setBackground(tempList.get(i));
+                i++;
+                k++;
+           }
+            tempList.clear();
+        }
     }
 public static Icon checkIcon(int a, int b){
         return chess[b][a].getIcon();

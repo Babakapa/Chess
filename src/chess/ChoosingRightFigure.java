@@ -6,10 +6,10 @@ import javax.swing.Icon;
 
 
 public class ChoosingRightFigure {
-
+    private static final String k = "src\\Images\\";
     public static String chooseFigure(Icon icon){
 String s = icon.toString();
-final String k = "src\\Images\\";
+
         switch (s){
             case k+"moderator_male-96.png":return "BlackKing";
             case k+"Pawn-icon0.png": return "BlackPawn0";
@@ -51,12 +51,39 @@ final String k = "src\\Images\\";
 default:return null;
         }
 
+
+
     }
 
 
 
+public static boolean check(Icon icon) {
+    String s = icon.toString();
+
+    switch (s) {
+        case k + "moderator_male-96.png":
+        case k + "Pawn-icon0.png":
+        case k + "Pawn-icon1.png":
+        case k + "Pawn-icon2.png":
+        case k + "Pawn-icon3.png":
+        case k + "Pawn-icon4.png":
+        case k + "Pawn-icon5.png":
+        case k + "Pawn-icon6.png":
+        case k + "Pawn-icon7.png":
+        case k + "Horse1.png":
+        case k + "Horse2.png":
+        case k + "rook1.png":
+        case k + "rook2.png":
+        case k + "elephant1.png":
+        case k + "elephant2.png":
+        case k + "blackqueen.png":
+            return false;
+        default:
+            return true;
 
 
+    }
+}
 
 
 
