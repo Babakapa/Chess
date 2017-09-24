@@ -8,65 +8,18 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.SplittableRandom;
 
 
-public class Board extends JFrame{
+
+public class Board extends Chess{
 private static JButton [][] chess  = new JButton[8][8];
-private King king = new King(4,0);
-    private Pawn pawn0 = new Pawn(0,1);
-    private Pawn pawn1 = new Pawn(1,1);
+private GetTurn turn = new GetTurn();
 
 
-
-    private Pawn pawn2 = new Pawn(2,1);
-    private Pawn pawn3 = new Pawn(3,1);
-    private Pawn pawn4 = new Pawn(4,1);
-    private Pawn pawn5 = new Pawn(5,1);
-    private Pawn pawn6 = new Pawn(6,1);
-    private Pawn pawn7 = new Pawn(7,1);
-
-
-    private Horse blackHorse1 = new Horse(1,0);
-    private Horse blackHorse2 = new Horse(6,0);
-
-private Rook blackRook1 = new Rook(0,0);
-    private Rook blackRook2 = new Rook(7,0);
-
-    private Elephant blackElephant1 = new Elephant(2,0);
-    private Elephant blackElephant2 = new Elephant(5,0);
-
-    private Queen blackQueen = new Queen(3,0);
-
-
-    private King whiteking = new King(4,7);
-    private Queen whiteQueen = new Queen(3,7);
-    private WhitePawn whitepawn0 = new WhitePawn(0,6);
-    private WhitePawn whitepawn1 = new WhitePawn(1,6);
-    private WhitePawn whitepawn2 = new WhitePawn(2,6);
-    private WhitePawn whitepawn3 = new WhitePawn(3,6);
-    private WhitePawn whitepawn4 = new WhitePawn(4,6);
-    private WhitePawn whitepawn5 = new WhitePawn(5,6);
-    private WhitePawn whitepawn6 = new WhitePawn(6,6);
-    private WhitePawn whitepawn7 = new WhitePawn(7,6);
-
-
-    private Horse whiteHorse1 = new Horse(1,7);
-    private Horse whiteHorse2 = new Horse(6,7);
-
-    private Rook whiteRook1 = new Rook(0,7);
-    private Rook whiteRook2 = new Rook(7,7);
-
-    private Elephant whiteElephant1 = new Elephant(2,7);
-    private Elephant whiteElephant2 = new Elephant(5,7);
-
-
-
-    private String nameOfTheFigure;
+    private String nameOfTheFigure = null;
 protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
   private LinkedList<Color> tempList = new LinkedList<>();
-
+private boolean white = true;
 private int i = 0;
 private int j = 0;
 
@@ -96,19 +49,28 @@ public Listener(int a, int b){
 }
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(chess[a][b].getIcon()!=null) {
+                clearPossibleVariants();
+                nameOfTheFigure = null;
+               
+                if(white && turn.getTurn(white, ChoosingRightFigure.chooseFigure(chess[a][b].getIcon()))){
+                    nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
+                }
+                else if(!white && turn.getTurn(white, ChoosingRightFigure.chooseFigure(chess[a][b].getIcon()))){
+                    nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
+                }
+                if(nameOfTheFigure!=null)
+                processing();
 
-            if(chess[a][b].getBackground()==Color.RED) {
+            }
+            else if(chess[a][b].getBackground()==Color.RED) {
                 chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
                 setNewXAndY(nameOfTheFigure, a, b);
                 clearPossibleVariants();
+                white=!white;
 
             }
-     else if(chess[a][b].getIcon()!=null) {
-clearPossibleVariants();
-        nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
-        processing();
-
-    }else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED){
+  else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED){
        clearPossibleVariants();
 
     }
@@ -116,6 +78,7 @@ else if(nameOfTheFigure!=null){
     chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
     setNewXAndY(nameOfTheFigure, a, b);
 clearPossibleVariants();
+white=!white;
     }
 
 
@@ -349,106 +312,108 @@ clearPossibleVariants();
     }
 
     private void processing() {
-        if(nameOfTheFigure=="BlackKing") {
-            list = king.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn0"){
-            list = pawn0.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn1"){
-            list = pawn1.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn2"){
-            list = pawn2.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn3"){
-            list = pawn3.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn4"){
-            list = pawn4.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn5"){
-            list = pawn5.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn6"){
-            list = pawn6.moving(false);
-        }
-        if(nameOfTheFigure=="BlackPawn7"){
-            list = pawn7.moving(false);
-        }
-        if(nameOfTheFigure=="BlackHorse1"){
-            list = blackHorse1.moving(false);
-        }
-        if(nameOfTheFigure=="BlackHorse2"){
-            list = blackHorse2.moving(false);
-        }
-        if(nameOfTheFigure=="BlackRook1"){
-            list = blackRook1.moving(false);
-        }
-        if(nameOfTheFigure=="BlackRook2"){
-            list = blackRook2.moving(false);
-        }
-        if(nameOfTheFigure=="BlackElephant1"){
-            list = blackElephant1.moving(false);
-        }
-        if(nameOfTheFigure=="BlackElephant2"){
-            list = blackElephant2.moving(false);
-        }
-        if(nameOfTheFigure=="BlackQueen"){
-            list = blackQueen.moving(false);
-        }
 
-        //white
+            if (nameOfTheFigure == "BlackKing") {
+                list = king.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn0") {
+                list = pawn0.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn1") {
+                list = pawn1.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn2") {
+                list = pawn2.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn3") {
+                list = pawn3.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn4") {
+                list = pawn4.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn5") {
+                list = pawn5.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn6") {
+                list = pawn6.moving(false);
+            }
+            if (nameOfTheFigure == "BlackPawn7") {
+                list = pawn7.moving(false);
+            }
+            if (nameOfTheFigure == "BlackHorse1") {
+                list = blackHorse1.moving(false);
+            }
+            if (nameOfTheFigure == "BlackHorse2") {
+                list = blackHorse2.moving(false);
+            }
+            if (nameOfTheFigure == "BlackRook1") {
+                list = blackRook1.moving(false);
+            }
+            if (nameOfTheFigure == "BlackRook2") {
+                list = blackRook2.moving(false);
+            }
+            if (nameOfTheFigure == "BlackElephant1") {
+                list = blackElephant1.moving(false);
+            }
+            if (nameOfTheFigure == "BlackElephant2") {
+                list = blackElephant2.moving(false);
+            }
+            if (nameOfTheFigure == "BlackQueen") {
+                list = blackQueen.moving(false);
+            }
+
+            //white
 
 
-        if(nameOfTheFigure=="WhiteKing") {
-            list = whiteking.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn0"){
-            list = whitepawn0.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn1"){
-            list = whitepawn1.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn2"){
-            list = whitepawn2.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn3"){
-            list = whitepawn3.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn4"){
-            list = whitepawn4.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn5"){
-            list = whitepawn5.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn6"){
-            list = whitepawn6.moving(true);
-        }
-        if(nameOfTheFigure=="WhitePawn7"){
-            list = whitepawn7.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteHorse1"){
-            list = whiteHorse1.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteHorse2"){
-            list = whiteHorse2.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteRook1"){
-            list = whiteRook1.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteRook2"){
-            list = whiteRook2.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteElephant1"){
-            list = whiteElephant1.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteElephant2"){
-            list = whiteElephant2.moving(true);
-        }
-        if(nameOfTheFigure=="WhiteQueen"){
-            list = whiteQueen.moving(true);
-        }
+
+            if (nameOfTheFigure == "WhiteKing") {
+                list = whiteking.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn0") {
+                list = whitepawn0.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn1") {
+                list = whitepawn1.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn2") {
+                list = whitepawn2.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn3") {
+                list = whitepawn3.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn4") {
+                list = whitepawn4.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn5") {
+                list = whitepawn5.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn6") {
+                list = whitepawn6.moving(true);
+            }
+            if (nameOfTheFigure == "WhitePawn7") {
+                list = whitepawn7.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteHorse1") {
+                list = whiteHorse1.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteHorse2") {
+                list = whiteHorse2.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteRook1") {
+                list = whiteRook1.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteRook2") {
+                list = whiteRook2.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteElephant1") {
+                list = whiteElephant1.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteElephant2") {
+                list = whiteElephant2.moving(true);
+            }
+            if (nameOfTheFigure == "WhiteQueen") {
+                list = whiteQueen.moving(true);
+            }
 
         showPossibleVariants();
 
