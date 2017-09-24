@@ -19,11 +19,11 @@ private GetTurn turn = new GetTurn();
     private String nameOfTheFigure = null;
 
   private LinkedList<Color> tempList = new LinkedList<>();
-private boolean white = true;
+
 private int i = 0;
 private int j = 0;
 
-
+    private static boolean white = true;
 
 
     public Board() {
@@ -51,7 +51,14 @@ public Listener(int a, int b){
 }
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(chess[a][b].getIcon()!=null) {
+     if(chess[a][b].getBackground()==Color.RED) {
+                chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
+                setNewXAndY(nameOfTheFigure, a, b);
+                clearPossibleVariants();
+                white=!white;
+
+            }
+           else if(chess[a][b].getIcon()!=null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
 
@@ -65,13 +72,7 @@ public Listener(int a, int b){
                 processing();
 
             }
-            else if(chess[a][b].getBackground()==Color.RED) {
-                chess[a][b].setIcon(ChoosingRightIcon.getIcon(nameOfTheFigure));
-                setNewXAndY(nameOfTheFigure, a, b);
-                clearPossibleVariants();
-                white=!white;
 
-            }
   else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED){
        clearPossibleVariants();
 
@@ -458,6 +459,10 @@ int i, k = 0;
     }
 public static Icon checkIcon(int a, int b){
         return chess[b][a].getIcon();
+    }
+
+    public static boolean getTurn(){
+    return white;
     }
 
 }

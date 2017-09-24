@@ -1,6 +1,6 @@
 package chess;
 import java.util.LinkedList;
-public abstract class ChessPropreties  {
+public abstract class ChessPropreties{
 
     protected int x;
     protected int y;
@@ -29,10 +29,21 @@ public abstract class ChessPropreties  {
         listForSteps.add(listY);
         listForSteps.add(redlistX);
         listForSteps.add(redlistY);
-
+kingIsUnderAttack();
 
         return listForSteps;
     }
+
+    private void kingIsUnderAttack() {
+        if(Board.getTurn()){
+
+        }
+        else if(!Board.getTurn()){
+
+        }
+
+    }
+
     public void setXAndY(int x , int y) {
         this.x = x;
         this.y = y;

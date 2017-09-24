@@ -93,7 +93,8 @@ protected void makeStrokes(){
     blackStrokes.put(blackQueen, blackQueen.moving(true));
     blackStrokes.put(king, king.moving(true));
 }
-
+protected boolean whiteKingIsUnderAttack = false;
+protected boolean blackKingIsunderAttack = false;
 
 
 }
