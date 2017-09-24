@@ -17,7 +17,7 @@ private GetTurn turn = new GetTurn();
 
 
     private String nameOfTheFigure = null;
-protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
+
   private LinkedList<Color> tempList = new LinkedList<>();
 private boolean white = true;
 private int i = 0;
@@ -36,6 +36,8 @@ chess[i][j].addActionListener(new Listener(i,j));
     }
 
    makeField();
+
+makeStrokes();
     }
 
 
@@ -52,7 +54,7 @@ public Listener(int a, int b){
             if(chess[a][b].getIcon()!=null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
-               
+
                 if(white && turn.getTurn(white, ChoosingRightFigure.chooseFigure(chess[a][b].getIcon()))){
                     nameOfTheFigure = ChoosingRightFigure.chooseFigure(chess[a][b].getIcon());
                 }

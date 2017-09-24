@@ -43,6 +43,10 @@ public abstract class ChessPropreties  {
     public int getY(){
         return y;
     }
+
+
+
+
 protected void checkingForOponnets(int x, int y, boolean yourFigure){
     if(ChoosingRightFigure.check(Board.checkIcon(x,y))!=yourFigure){
         redlistX.add(x);

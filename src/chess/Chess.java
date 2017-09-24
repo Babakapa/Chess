@@ -1,10 +1,10 @@
 package chess;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
-/**
- * Created by Асус on 24.09.2017.
- */
 public abstract class Chess extends JFrame{
     protected King king = new King(4,0);
     protected Pawn pawn0 = new Pawn(0,1);
@@ -52,5 +52,48 @@ public abstract class Chess extends JFrame{
 
     protected Elephant whiteElephant1 = new Elephant(2,7);
     protected Elephant whiteElephant2 = new Elephant(5,7);
+
+    protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
+
+    protected Map<Object,LinkedList> whiteStrokes = new HashMap<>();
+    protected Map<Object,LinkedList> blackStrokes = new HashMap<>();
+protected void makeStrokes(){
+    whiteStrokes.put(whitepawn0, whitepawn0.moving(true));
+    whiteStrokes.put(whitepawn1, whitepawn1.moving(true));
+    whiteStrokes.put(whitepawn2, whitepawn2.moving(true));
+    whiteStrokes.put(whitepawn3, whitepawn3.moving(true));
+    whiteStrokes.put(whitepawn4, whitepawn4.moving(true));
+    whiteStrokes.put(whitepawn5, whitepawn5.moving(true));
+    whiteStrokes.put(whitepawn6, whitepawn6.moving(true));
+    whiteStrokes.put(whitepawn7, whitepawn7.moving(true));
+    whiteStrokes.put(whiteking, whiteking.moving(true));
+    whiteStrokes.put(whiteElephant1, whiteElephant1.moving(true));
+    whiteStrokes.put(whiteElephant2, whiteElephant2.moving(true));
+    whiteStrokes.put(whiteHorse1, whiteHorse1.moving(true));
+    whiteStrokes.put(whiteHorse2, whiteHorse2.moving(true));
+    whiteStrokes.put(whiteRook1, whiteRook1.moving(true));
+    whiteStrokes.put(whiteRook2, whiteRook2.moving(true));
+    whiteStrokes.put(whiteQueen, whiteQueen.moving(true));
+
+    //Black
+    blackStrokes.put(pawn0, pawn0.moving(true));
+    blackStrokes.put(pawn1, pawn1.moving(true));
+    blackStrokes.put(pawn2, pawn2.moving(true));
+    blackStrokes.put(pawn3, pawn3.moving(true));
+    blackStrokes.put(pawn4, pawn4.moving(true));
+    blackStrokes.put(pawn5, pawn5.moving(true));
+    blackStrokes.put(pawn6, pawn6.moving(true));
+    blackStrokes.put(pawn7, pawn7.moving(true));
+    blackStrokes.put(blackElephant1, blackElephant1.moving(true));
+    blackStrokes.put(blackElephant2, blackElephant2.moving(true));
+    blackStrokes.put(blackHorse1, blackHorse1.moving(true));
+    blackStrokes.put(blackHorse2, blackHorse2.moving(true));
+    blackStrokes.put(blackRook1, blackRook1.moving(true));
+    blackStrokes.put(blackRook2, blackRook2.moving(true));
+    blackStrokes.put(blackQueen, blackQueen.moving(true));
+    blackStrokes.put(king, king.moving(true));
+}
+
+
 
 }
