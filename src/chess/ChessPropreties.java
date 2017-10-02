@@ -11,38 +11,19 @@ public abstract class ChessPropreties{
     protected LinkedList<Integer> redlistY = new LinkedList<>();
 
 
-    public abstract void checkForBorders(boolean bp);
+    public abstract LinkedList checkForBorders(boolean bp);
 
-    public LinkedList moving(boolean bp) {
+    public LinkedList moving() {
 
-        if (listY != null || listX != null) {
-            listY.clear();
-            listX.clear();
-        }
-        if (redlistY!=null || redlistY!=null){
-            redlistY.clear();
-            redlistX.clear();
-        }
-
-        checkForBorders(bp);
         listForSteps.add(listX);
         listForSteps.add(listY);
         listForSteps.add(redlistX);
         listForSteps.add(redlistY);
-kingIsUnderAttack();
 
         return listForSteps;
     }
 
-    private void kingIsUnderAttack() {
-        if(Board.getTurn()){
 
-        }
-        else if(!Board.getTurn()){
-
-        }
-
-    }
 
     public void setXAndY(int x , int y) {
         this.x = x;

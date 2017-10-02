@@ -1,5 +1,7 @@
 package chess;
 
+import java.util.LinkedList;
+
 /**
  * Created by Асус on 14.06.2017.
  */
@@ -10,7 +12,15 @@ private int i,j;
         setXAndY(x,y);
     }
     @Override
-    public void checkForBorders(boolean bp) {
+    public LinkedList checkForBorders(boolean bp) {
+        if (listY != null || listX != null) {
+            listY.clear();
+            listX.clear();
+        }
+        if (redlistY!=null || redlistY!=null){
+            redlistY.clear();
+            redlistX.clear();
+        }
         checkDownRight(bp);
         checkDownLeft(bp);
         checkUpRight(bp);
@@ -19,6 +29,7 @@ private int i,j;
 checkLeft(bp);
 checkRight(bp);
 checkUp(bp);
+return moving();
     }
     @Override
     public void checkUpRight(boolean bp) {

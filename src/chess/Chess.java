@@ -6,95 +6,136 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public abstract class Chess extends JFrame{
-    protected King king = new King(4,0);
-    protected Pawn pawn0 = new Pawn(0,1);
-    protected Pawn pawn1 = new Pawn(1,1);
+    protected static King king = new King(4,0);
+    protected static Pawn pawn0 = new Pawn(0,1);
+    protected static Pawn pawn1 = new Pawn(1,1);
 
 
 
-    protected Pawn pawn2 = new Pawn(2,1);
-    protected Pawn pawn3 = new Pawn(3,1);
-    protected Pawn pawn4 = new Pawn(4,1);
-    protected Pawn pawn5 = new Pawn(5,1);
-    protected Pawn pawn6 = new Pawn(6,1);
-    protected Pawn pawn7 = new Pawn(7,1);
+    protected static Pawn pawn2 = new Pawn(2,1);
+    protected static Pawn pawn3 = new Pawn(3,1);
+    protected static Pawn pawn4 = new Pawn(4,1);
+    protected static Pawn pawn5 = new Pawn(5,1);
+    protected static Pawn pawn6 = new Pawn(6,1);
+    protected static Pawn pawn7 = new Pawn(7,1);
 
 
-    protected Horse blackHorse1 = new Horse(1,0);
-    protected Horse blackHorse2 = new Horse(6,0);
+    protected static Horse blackHorse1 = new Horse(1,0);
+    protected static Horse blackHorse2 = new Horse(6,0);
 
-    protected Rook blackRook1 = new Rook(0,0);
-    protected Rook blackRook2 = new Rook(7,0);
+    protected static Rook blackRook1 = new Rook(0,0);
+    protected static Rook blackRook2 = new Rook(7,0);
 
-    protected Elephant blackElephant1 = new Elephant(2,0);
-    protected Elephant blackElephant2 = new Elephant(5,0);
+    protected static Elephant blackElephant1 = new Elephant(2,0);
+    protected static Elephant blackElephant2 = new Elephant(5,0);
 
-    protected Queen blackQueen = new Queen(3,0);
-
-
-    protected King whiteking = new King(4,7);
-    protected Queen whiteQueen = new Queen(3,7);
-    protected WhitePawn whitepawn0 = new WhitePawn(0,6);
-    protected WhitePawn whitepawn1 = new WhitePawn(1,6);
-    protected WhitePawn whitepawn2 = new WhitePawn(2,6);
-    protected WhitePawn whitepawn3 = new WhitePawn(3,6);
-    protected WhitePawn whitepawn4 = new WhitePawn(4,6);
-    protected WhitePawn whitepawn5 = new WhitePawn(5,6);
-    protected WhitePawn whitepawn6 = new WhitePawn(6,6);
-    protected WhitePawn whitepawn7 = new WhitePawn(7,6);
+    protected static Queen blackQueen = new Queen(3,0);
 
 
-    protected Horse whiteHorse1 = new Horse(1,7);
-    protected Horse whiteHorse2 = new Horse(6,7);
+    protected static King whiteking = new King(4,7);
+    protected static Queen whiteQueen = new Queen(3,7);
+    protected static WhitePawn whitepawn0 = new WhitePawn(0,6);
+    protected static WhitePawn whitepawn1 = new WhitePawn(1,6);
+    protected static WhitePawn whitepawn2 = new WhitePawn(2,6);
+    protected static WhitePawn whitepawn3 = new WhitePawn(3,6);
+    protected static WhitePawn whitepawn4 = new WhitePawn(4,6);
+    protected static WhitePawn whitepawn5 = new WhitePawn(5,6);
+    protected static WhitePawn whitepawn6 = new WhitePawn(6,6);
+    protected static WhitePawn whitepawn7 = new WhitePawn(7,6);
 
-    protected Rook whiteRook1 = new Rook(0,7);
-    protected Rook whiteRook2 = new Rook(7,7);
 
-    protected Elephant whiteElephant1 = new Elephant(2,7);
-    protected Elephant whiteElephant2 = new Elephant(5,7);
+    protected static Horse whiteHorse1 = new Horse(1,7);
+    protected static Horse whiteHorse2 = new Horse(6,7);
+
+    protected static Rook whiteRook1 = new Rook(0,7);
+    protected static Rook whiteRook2 = new Rook(7,7);
+
+    protected static Elephant whiteElephant1 = new Elephant(2,7);
+    protected static Elephant whiteElephant2 = new Elephant(5,7);
 
     protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
 
-    protected Map<Object,LinkedList> whiteStrokes = new HashMap<>();
-    protected Map<Object,LinkedList> blackStrokes = new HashMap<>();
-protected void makeStrokes(){
-    whiteStrokes.put(whitepawn0, whitepawn0.moving(true));
-    whiteStrokes.put(whitepawn1, whitepawn1.moving(true));
-    whiteStrokes.put(whitepawn2, whitepawn2.moving(true));
-    whiteStrokes.put(whitepawn3, whitepawn3.moving(true));
-    whiteStrokes.put(whitepawn4, whitepawn4.moving(true));
-    whiteStrokes.put(whitepawn5, whitepawn5.moving(true));
-    whiteStrokes.put(whitepawn6, whitepawn6.moving(true));
-    whiteStrokes.put(whitepawn7, whitepawn7.moving(true));
-    whiteStrokes.put(whiteking, whiteking.moving(true));
-    whiteStrokes.put(whiteElephant1, whiteElephant1.moving(true));
-    whiteStrokes.put(whiteElephant2, whiteElephant2.moving(true));
-    whiteStrokes.put(whiteHorse1, whiteHorse1.moving(true));
-    whiteStrokes.put(whiteHorse2, whiteHorse2.moving(true));
-    whiteStrokes.put(whiteRook1, whiteRook1.moving(true));
-    whiteStrokes.put(whiteRook2, whiteRook2.moving(true));
-    whiteStrokes.put(whiteQueen, whiteQueen.moving(true));
 
-    //Black
-    blackStrokes.put(pawn0, pawn0.moving(true));
-    blackStrokes.put(pawn1, pawn1.moving(true));
-    blackStrokes.put(pawn2, pawn2.moving(true));
-    blackStrokes.put(pawn3, pawn3.moving(true));
-    blackStrokes.put(pawn4, pawn4.moving(true));
-    blackStrokes.put(pawn5, pawn5.moving(true));
-    blackStrokes.put(pawn6, pawn6.moving(true));
-    blackStrokes.put(pawn7, pawn7.moving(true));
-    blackStrokes.put(blackElephant1, blackElephant1.moving(true));
-    blackStrokes.put(blackElephant2, blackElephant2.moving(true));
-    blackStrokes.put(blackHorse1, blackHorse1.moving(true));
-    blackStrokes.put(blackHorse2, blackHorse2.moving(true));
-    blackStrokes.put(blackRook1, blackRook1.moving(true));
-    blackStrokes.put(blackRook2, blackRook2.moving(true));
-    blackStrokes.put(blackQueen, blackQueen.moving(true));
-    blackStrokes.put(king, king.moving(true));
-}
 protected boolean whiteKingIsUnderAttack = false;
 protected boolean blackKingIsunderAttack = false;
+    protected static boolean white = true;
+protected static ChessPropreties gettingRightWhiteObject(int x, int y) {
+
+    if (x == whitepawn0.getX() && y == whitepawn0.getY())
+        return whitepawn0;
+    if (x == whitepawn1.getX() && y == whitepawn1.getY())
+        return whitepawn1;
+    if (x == whitepawn2.getX() && y == whitepawn2.getY())
+        return whitepawn2;
+    if (x == whitepawn3.getX() && y == whitepawn2.getY())
+        return whitepawn3;
+    if (x == whitepawn3.getX() && y == whitepawn3.getY())
+        return whitepawn3;
+    if (x == whitepawn4.getX() && y == whitepawn4.getY())
+        return whitepawn4;
+    if (x == whitepawn5.getX() && y == whitepawn5.getY())
+        return whitepawn5;
+    if (x == whitepawn6.getX() && y == whitepawn6.getY())
+        return whitepawn6;
+    if (x == whitepawn7.getX() && y == whitepawn7.getY())
+        return whitepawn7;
+    if (x == whiteElephant1.getX() && y == whiteElephant1.getY())
+        return whiteElephant1;
+    if (x == whiteElephant2.getX() && y == whiteElephant2.getY())
+        return whiteElephant2;
+    if (x == whiteHorse2.getX() && y == whiteHorse2.getY())
+        return whiteHorse2;
+    if (x == whiteHorse1.getX() && y == whiteHorse1.getY())
+        return whiteHorse1;
+    if (x == whiteQueen.getX() && y == whiteQueen.getY())
+        return whiteQueen;
+    if (x == whiteRook1.getX() && y == whiteRook1.getY())
+        return whiteRook1;
+    if (x == whiteRook2.getX() && y == whiteRook2.getY())
+        return whiteRook2;
+    if (x == whiteking.getX() && y == whiteking.getY())
+        return whiteking;
+    return null;
+}
+public static ChessPropreties gettingRightBlackObject(int x, int y){
+
+    if (x == pawn0.getX() && y == pawn0.getY())
+        return pawn0;
+    if (x == pawn1.getX() && y == pawn1.getY())
+        return pawn1;
+    if (x == pawn2.getX() && y == pawn2.getY())
+        return pawn2;
+    if (x == pawn3.getX() && y == pawn3.getY())
+        return pawn3;
+    if (x == pawn4.getX() && y == pawn4.getY())
+        return pawn4;
+    if (x == pawn5.getX() && y == pawn5.getY())
+        return pawn5;
+    if (x == pawn6.getX() && y == pawn6.getY())
+        return pawn6;
+    if (x == pawn7.getX() && y == pawn7.getY())
+        return pawn7;
+    if (x == blackRook2.getX() && y == blackRook2.getY())
+        return blackRook2;
+    if (x == blackRook1.getX() && y == blackRook1.getY())
+        return blackRook1;
+    if (x == blackQueen.getX() && y == blackQueen.getY())
+        return blackQueen;
+    if (x == blackElephant2.getX() && y == blackElephant2.getY())
+        return blackElephant2;
+    if (x == blackElephant1.getX() && y == blackElephant1.getY())
+        return blackElephant1;
+    if (x == blackHorse1.getX() && y == blackHorse1.getY())
+        return blackHorse1;
+    if (x == blackHorse2.getX() && y == blackHorse2.getY())
+        return blackHorse2;
+    if (x == king.getX() && y == king.getY())
+        return king;
+    return null;
+}
+
+
+
 
 
 }

@@ -1,17 +1,31 @@
 package chess;
 
 
+import java.util.LinkedList;
 
 public class Pawn extends ChessPropreties{
     private boolean firstStep = true;
 public Pawn(int x, int y){
-setXAndY(x,y);
+this.x = x;
+this.y = y;
+}
+@Override
+public void setXAndY(int x, int y){
+this.x = x;
+this.y = y;
+setFirstStep();
 }
 
-
-
     @Override
-    public void checkForBorders(boolean bp) {
+    public LinkedList checkForBorders(boolean bp) {
+        if (listY != null || listX != null) {
+            listY.clear();
+            listX.clear();
+        }
+        if (redlistY!=null || redlistY!=null){
+            redlistY.clear();
+            redlistX.clear();
+        }
     if(firstStep){
         if(Board.checkIcon(x,y + 1)==null) {
 
@@ -35,7 +49,7 @@ else{
     if(x-1>-1 && y+1<8 && Board.checkIcon(x-1,y+1)!=null)
         checkingForOponnets(x-1,y+1,bp);
 
-
+return moving();
 }
 
     public void setFirstStep() {

@@ -1,5 +1,7 @@
 package chess;
 
+import java.util.LinkedList;
+
 public class Horse extends ChessPropreties {
 
 
@@ -8,7 +10,15 @@ public Horse(int x, int y){
 }
 
     @Override
-    public void checkForBorders(boolean bp) {
+    public LinkedList checkForBorders(boolean bp) {
+        if (listY != null || listX != null) {
+            listY.clear();
+            listX.clear();
+        }
+        if (redlistY!=null || redlistY!=null){
+            redlistY.clear();
+            redlistX.clear();
+        }
         if(x - 2 > -1){
             if(y + 1 < 8){
                 if(Board.checkIcon(x - 2, y + 1)==null) {
@@ -75,6 +85,6 @@ public Horse(int x, int y){
                 else checkingForOponnets(x+1,y+2,bp);
             }
         }
-
+return moving();
     }
 }
