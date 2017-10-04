@@ -55,9 +55,26 @@ public abstract class Chess extends JFrame{
 
     protected LinkedList<LinkedList<Integer>> list= new LinkedList<>();
 
+    public static King getKing() {
+        return king;
+    }
 
-protected boolean whiteKingIsUnderAttack = false;
-protected boolean blackKingIsunderAttack = false;
+    public static King getWhiteking() {
+        return whiteking;
+    }
+
+    protected static boolean whiteKingIsUnderAttack = false;
+protected static boolean blackKingIsunderAttack = false;
+
+
+    public static void setWhiteKingIsUnderAttack(boolean whiteKingIsUnderAttack) {
+        Chess.whiteKingIsUnderAttack = whiteKingIsUnderAttack;
+    }
+
+    public static void setBlackKingIsunderAttack(boolean blackKingIsunderAttack) {
+        Chess.blackKingIsunderAttack = blackKingIsunderAttack;
+    }
+
     protected static boolean white = true;
 protected static ChessPropreties gettingRightWhiteObject(int x, int y) {
 
@@ -134,6 +151,52 @@ public static ChessPropreties gettingRightBlackObject(int x, int y){
     return null;
 }
 
+    protected LinkedList<LinkedList<LinkedList<Integer>>> blackStrokes = new LinkedList<>();
+    protected LinkedList<LinkedList<LinkedList<Integer>>> whiteStrokes = new LinkedList<>();
+protected void updateWhiteStrokes(){
+    if(!whiteStrokes.isEmpty()){
+        whiteStrokes.clear();
+    }
+whiteStrokes.add(whitepawn0.checkForBorders(true));
+    whiteStrokes.add(whitepawn1.checkForBorders(true));
+    whiteStrokes.add(whitepawn2.checkForBorders(true));
+    whiteStrokes.add(whitepawn3.checkForBorders(true));
+    whiteStrokes.add(whitepawn4.checkForBorders(true));
+    whiteStrokes.add(whitepawn5.checkForBorders(true));
+    whiteStrokes.add(whitepawn6.checkForBorders(true));
+    whiteStrokes.add(whitepawn7.checkForBorders(true));
+    whiteStrokes.add(whiteking.checkForBorders(true));
+    whiteStrokes.add(whiteQueen.checkForBorders(true));
+    whiteStrokes.add(whiteHorse1.checkForBorders(true));
+    whiteStrokes.add(whiteHorse2.checkForBorders(true));
+    whiteStrokes.add(whiteElephant1.checkForBorders(true));
+    whiteStrokes.add(whiteElephant2.checkForBorders(true));
+    whiteStrokes.add(whiteRook1.checkForBorders(true));
+    whiteStrokes.add(whiteRook2.checkForBorders(true));
+}
+
+
+
+protected void updateBlackStrokes(){
+    blackStrokes.add(pawn0.checkForBorders(false));
+
+    blackStrokes.add(pawn1.checkForBorders(false));
+
+    blackStrokes.add(pawn2.checkForBorders(false));
+    blackStrokes.add(pawn3.checkForBorders(false));
+    blackStrokes.add(pawn4.checkForBorders(false));
+    blackStrokes.add(pawn5.checkForBorders(false));
+    blackStrokes.add(pawn6.checkForBorders(false));
+    blackStrokes.add(pawn7.checkForBorders(false));
+    blackStrokes.add(king.checkForBorders(false));
+    blackStrokes.add(blackQueen.checkForBorders(false));
+    blackStrokes.add(blackHorse1.checkForBorders(false));
+    blackStrokes.add(blackHorse2.checkForBorders(false));
+    blackStrokes.add(blackElephant1.checkForBorders(false));
+    blackStrokes.add(blackElephant2.checkForBorders(false));
+    blackStrokes.add(blackRook1.checkForBorders(false));
+    blackStrokes.add(blackRook2.checkForBorders(false));
+    }
 
 
 

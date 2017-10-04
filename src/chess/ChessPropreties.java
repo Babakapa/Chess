@@ -13,7 +13,7 @@ public abstract class ChessPropreties{
 
     public abstract LinkedList checkForBorders(boolean bp);
 
-    public LinkedList moving() {
+    protected LinkedList moving() {
 
         listForSteps.add(listX);
         listForSteps.add(listY);
@@ -40,10 +40,16 @@ public abstract class ChessPropreties{
 
 
 protected void checkingForOponnets(int x, int y, boolean yourFigure){
-    if(ChoosingRightFigure.check(Board.checkIcon(x,y))!=yourFigure){
+    if(ChoosingRightFigure.check(Board.checkIcon(x,y))!=yourFigure && Board.checkForCorrectness(x,y)){
         redlistX.add(x);
         redlistY.add(y);
+if(Chess.getWhiteking().getX()==x && Chess.getWhiteking().getY()==y){
+    Chess.setWhiteKingIsUnderAttack(true);
 
+}
+        if(Chess.getKing().getX()==x && Chess.getKing().getY()==y){
+            Chess.setBlackKingIsunderAttack(true);
+        }
     }
 
 }

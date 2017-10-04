@@ -13,7 +13,6 @@ import java.util.LinkedList;
 
 public class Board extends Chess{
 private static JButton [][] chess  = new JButton[8][8];
-private GetTurn turn = new GetTurn();
 private Icon tempIMG = null;
 
     private ChessPropreties nameOfTheFigure = null;
@@ -54,11 +53,16 @@ public Listener(int a, int b){
         @Override
         public void actionPerformed(ActionEvent e) {
     if(chess[a][b].getBackground()==Color.RED) {
+        removeFromBoard(b,a);
         chess[a][b].setIcon(tempIMG);
         chess[nameOfTheFigure.getY()][nameOfTheFigure.getX()].setIcon(null);
         setNewXAndY(a, b);
         clearPossibleVariants();
         white = !white;
+
+     //  setKingAttack();
+       // updateBlackStrokes();
+        //updateWhiteStrokes();
     }
           else if(chess[a][b].getIcon()!=null) {
                 clearPossibleVariants();
@@ -88,14 +92,32 @@ else
     setNewXAndY(a, b);
 clearPossibleVariants();
 white=!white;
+//setKingAttack();
+//updateBlackStrokes();
+//updateWhiteStrokes();
+
+  }
+    }
     }
 
+    private void removeFromBoard(int x, int y) {
+        if(white){
+            ChessPropreties temp = gettingRightBlackObject(x,y);
+            temp.setXAndY(-1,-1);
+        }
+        else if(!white){
+            ChessPropreties temp = gettingRightWhiteObject(x,y);
+            temp.setXAndY(-1,-1);
+        }
+    }
 
-
-}
-
-
-
+    private static void setKingAttack(){
+        if(blackKingIsunderAttack){
+            blackKingIsunderAttack = false;
+        }
+        else if(whiteKingIsUnderAttack){
+            whiteKingIsUnderAttack = false;
+        }
 
     }
     private void setNewXAndY(int a, int b) {
@@ -220,10 +242,21 @@ int i, k = 0;
 public static Icon checkIcon(int a, int b){
         return chess[b][a].getIcon();
     }
-
-    public static boolean getTurn(){
-    return white;
+public static boolean checkForCorrectness(int x, int y){
+    ChessPropreties temp = null;
+    if(white){
+        temp = gettingRightBlackObject(x,y);
     }
+    else if(!white){
+        temp = gettingRightWhiteObject(x,y);
+    }
+
+ if(temp!=null && temp.getX()==x && temp.getY()==y){
+     return true;
+ }
+
+    return false;
+}
 
 }
 
