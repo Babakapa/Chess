@@ -21,14 +21,16 @@ private int i,j;
             redlistY.clear();
             redlistX.clear();
         }
-        checkDownRight(bp);
-        checkDownLeft(bp);
-        checkUpRight(bp);
-        checkUpLeft(bp);
-        checkDown(bp);
-checkLeft(bp);
-checkRight(bp);
-checkUp(bp);
+        if(x!=-1 && y!=-1) {
+            checkDownRight(bp);
+            checkDownLeft(bp);
+            checkUpRight(bp);
+            checkUpLeft(bp);
+            checkDown(bp);
+            checkLeft(bp);
+            checkRight(bp);
+            checkUp(bp);
+        }
 return moving();
     }
     @Override

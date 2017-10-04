@@ -20,10 +20,12 @@ public Elephant(int x, int y){
             redlistY.clear();
             redlistX.clear();
         }
-checkDownRight(bp);
-checkDownLeft(bp);
-checkUpRight(bp);
-checkUpLeft(bp);
+        if(x!=-1 && y!=-1) {
+            checkDownRight(bp);
+            checkDownLeft(bp);
+            checkUpRight(bp);
+            checkUpLeft(bp);
+        }
 return moving();
     }
 @Override

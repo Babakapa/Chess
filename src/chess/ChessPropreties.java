@@ -1,5 +1,9 @@
 package chess;
+import sun.management.LazyCompositeData;
+
 import java.util.LinkedList;
+import java.util.zip.ZipEntry;
+
 public abstract class ChessPropreties{
 
     protected int x;
@@ -40,15 +44,17 @@ public abstract class ChessPropreties{
 
 
 protected void checkingForOponnets(int x, int y, boolean yourFigure){
-    if(ChoosingRightFigure.check(Board.checkIcon(x,y))!=yourFigure && Board.checkForCorrectness(x,y)){
+    if(Chess.checkForAttack(x,y,yourFigure) ){
         redlistX.add(x);
         redlistY.add(y);
+
 if(Chess.getWhiteking().getX()==x && Chess.getWhiteking().getY()==y){
-    Chess.setWhiteKingIsUnderAttack(true);
+   Chess.setWhiteKingIsUnderAttack(true);
 
 }
         if(Chess.getKing().getX()==x && Chess.getKing().getY()==y){
             Chess.setBlackKingIsunderAttack(true);
+            System.out.println(getClass().toString());
         }
     }
 

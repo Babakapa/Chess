@@ -15,7 +15,7 @@ public class Board extends Chess{
 private static JButton [][] chess  = new JButton[8][8];
 private Icon tempIMG = null;
 
-    private ChessPropreties nameOfTheFigure = null;
+    private static ChessPropreties nameOfTheFigure = null;
 
   private LinkedList<Color> tempList = new LinkedList<>();
 
@@ -44,60 +44,54 @@ chess[i][j].addActionListener(new Listener(i,j));
 
 
 
-    private class Listener implements ActionListener{
-private int a,b;
-public Listener(int a, int b){
-    this.a = a;
-    this.b = b;
-}
+    private class Listener implements ActionListener {
+        private int a, b;
+
+        public Listener(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
-    if(chess[a][b].getBackground()==Color.RED) {
-        removeFromBoard(b,a);
-        chess[a][b].setIcon(tempIMG);
-        chess[nameOfTheFigure.getY()][nameOfTheFigure.getX()].setIcon(null);
-        setNewXAndY(a, b);
-        clearPossibleVariants();
-        white = !white;
-
-     //  setKingAttack();
-       // updateBlackStrokes();
-        //updateWhiteStrokes();
-    }
-          else if(chess[a][b].getIcon()!=null) {
+            if (chess[a][b].getBackground() == Color.RED) {
+                removeFromBoard(b, a);
+                chess[a][b].setIcon(tempIMG);
+                chess[nameOfTheFigure.getY()][nameOfTheFigure.getX()].setIcon(null);
+                setNewXAndY(a, b);
+                clearPossibleVariants();
+                white = !white;
+                updateBlackStrokes();
+                updateWhiteStrokes();
+            } else if (chess[a][b].getIcon() != null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
-tempIMG = chess[a][b].getIcon();
-                if(white){
-                    nameOfTheFigure = gettingRightWhiteObject(b,a);
+                tempIMG = chess[a][b].getIcon();
+                if (white) {
+                    nameOfTheFigure = gettingRightWhiteObject(b, a);
+                } else if (!white) {
+                    nameOfTheFigure = gettingRightBlackObject(b, a);
                 }
-                else if(!white){
-                    nameOfTheFigure = gettingRightBlackObject(b,a);
-                }
-                if(nameOfTheFigure!=null)
-                processing();
+                if (nameOfTheFigure != null)
+                    processing();
+
+            } else if (chess[a][b].getBackground() != Color.blue && !list.isEmpty() && chess[a][b].getBackground() != Color.RED) {
+                clearPossibleVariants();
+
+            } else if (nameOfTheFigure != null) {
+                chess[nameOfTheFigure.getY()][nameOfTheFigure.getX()].setIcon(null);
+
+                chess[a][b].setIcon(tempIMG);
+
+                setNewXAndY(a, b);
+                clearPossibleVariants();
+                updateBlackStrokes();
+                updateWhiteStrokes();
+                white = !white;
+
 
             }
-
-  else if(chess[a][b].getBackground()!=Color.blue && !list.isEmpty() && chess[a][b].getBackground()!=Color.RED){
-       clearPossibleVariants();
-
-    }
-else
-    if(nameOfTheFigure!=null){
-        chess[nameOfTheFigure.getY()][nameOfTheFigure.getX()].setIcon(null);
-
-        chess[a][b].setIcon(tempIMG);
-
-    setNewXAndY(a, b);
-clearPossibleVariants();
-white=!white;
-//setKingAttack();
-//updateBlackStrokes();
-//updateWhiteStrokes();
-
-  }
-    }
+        }
     }
 
     private void removeFromBoard(int x, int y) {
@@ -198,11 +192,55 @@ if(white){
 else{
     list = nameOfTheFigure.checkForBorders(false);
 }
-
+/*if(blackKingIsunderAttack){
+    chhckForBlackStrokes();
+}
+else if(whiteKingIsUnderAttack){
+    checkForWhiteStrokes();
+}*/
 
         showPossibleVariants();
 
 
+    }
+
+    private void chhckForBlackStrokes() {
+        int x = nameOfTheFigure.getX();
+        int y = nameOfTheFigure.getY();
+        boolean bp = blackKingIsunderAttack;
+        LinkedList<LinkedList<Integer>> temp = new LinkedList<>();
+        temp.add(new LinkedList<>());
+        temp.add(new LinkedList<>());
+        for(int i = 0;i<list.get(0).size();i++){
+            temp.get(0).add(list.get(0).get(i));
+            temp.get(1).add(list.get(1).get(i));
+        }
+
+        for(int i = 0; i < temp.get(0).size();i++){
+            nameOfTheFigure.setXAndY(temp.get(0).get(i),temp.get(1).get(i));
+            //blackKingIsunderAttack = false;
+updateWhiteStrokes();
+
+            if(blackKingIsunderAttack){
+                temp.get(0).remove(i);
+                temp.get(1).remove(i);
+                    i--;
+            }
+            nameOfTheFigure.setXAndY(x,y);
+            updateWhiteStrokes();
+          //  blackKingIsunderAttack = bp;
+        }
+
+list.get(0).clear();
+        list.get(1).clear();
+        for(int i = 0;i<temp.get(0).size();i++){
+            list.get(0).add(temp.get(0).get(i));
+            list.get(1).add(temp.get(1).get(i));
+        }
+
+    }
+
+    private void checkForWhiteStrokes() {
     }
 
     private void showPossibleVariants() {
@@ -254,7 +292,6 @@ public static boolean checkForCorrectness(int x, int y){
  if(temp!=null && temp.getX()==x && temp.getY()==y){
      return true;
  }
-
     return false;
 }
 

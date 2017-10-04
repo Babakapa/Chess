@@ -19,11 +19,12 @@ public Rook(int x, int y){
             redlistY.clear();
             redlistX.clear();
         }
-    checkLeft(bp);
-    checkRight(bp);
-    checkUp(bp);
-    checkDown(bp);
-
+        if(x!=-1 && y!=-1) {
+            checkLeft(bp);
+            checkRight(bp);
+            checkUp(bp);
+            checkDown(bp);
+        }
 return moving();
 
 

@@ -30,28 +30,29 @@ public class WhitePawn extends ChessPropreties {
             redlistY.clear();
             redlistX.clear();
         }
-        if(firstStep){
-            if(Board.checkIcon(x,y - 1)==null) {
+        if(x!=-1 && y!=-1) {
+            if (firstStep) {
+                if (Board.checkIcon(x, y - 1) == null) {
 
-                listX.add(x);
-                listY.add(y - 1);
-
-                if(Board.checkIcon(x,y - 2)==null){
                     listX.add(x);
-                    listY.add(y - 2);
+                    listY.add(y - 1);
+
+                    if (Board.checkIcon(x, y - 2) == null) {
+                        listX.add(x);
+                        listY.add(y - 2);
+                    }
+                }
+            } else {
+                if (y > 0) {
+                    listX.add(x);
+                    listY.add(y - 1);
                 }
             }
+            if (x + 1 < 8 && y - 1 > -1 && Board.checkIcon(x + 1, y - 1) != null)
+                checkingForOponnets(x + 1, y - 1, bp);
+            if (x - 1 > -1 && y - 1 > -1 && Board.checkIcon(x - 1, y - 1) != null)
+                checkingForOponnets(x - 1, y - 1, bp);
         }
-        else{
-            if(y > 0) {
-                listX.add(x);
-                listY.add(y - 1);
-            }
-        }
-        if(x+1<8 && y-1>-1 && Board.checkIcon(x+1,y-1)!=null)
-            checkingForOponnets(x+1,y-1,bp);
-        if(x-1>-1 && y-1>-1 && Board.checkIcon(x-1,y-1)!=null)
-            checkingForOponnets(x-1,y-1,bp);
 return moving();
     }
 
