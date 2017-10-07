@@ -154,51 +154,48 @@ public static ChessPropreties gettingRightBlackObject(int x, int y){
     protected LinkedList<LinkedList<LinkedList<Integer>>> blackStrokes = new LinkedList<>();
     protected LinkedList<LinkedList<LinkedList<Integer>>> whiteStrokes = new LinkedList<>();
 protected void updateWhiteStrokes(){
-    if(!whiteStrokes.isEmpty()){
-        whiteStrokes.clear();
-    }
-whiteStrokes.add(whitepawn0.checkForBorders(true));
-    whiteStrokes.add(whitepawn1.checkForBorders(true));
-    whiteStrokes.add(whitepawn2.checkForBorders(true));
-    whiteStrokes.add(whitepawn3.checkForBorders(true));
-    whiteStrokes.add(whitepawn4.checkForBorders(true));
-    whiteStrokes.add(whitepawn5.checkForBorders(true));
-    whiteStrokes.add(whitepawn6.checkForBorders(true));
-    whiteStrokes.add(whitepawn7.checkForBorders(true));
-    whiteStrokes.add(whiteking.checkForBorders(true));
-    whiteStrokes.add(whiteQueen.checkForBorders(true));
-    whiteStrokes.add(whiteHorse1.checkForBorders(true));
-    whiteStrokes.add(whiteHorse2.checkForBorders(true));
-    whiteStrokes.add(whiteElephant1.checkForBorders(true));
-    whiteStrokes.add(whiteElephant2.checkForBorders(true));
-    whiteStrokes.add(whiteRook1.checkForBorders(true));
-    whiteStrokes.add(whiteRook2.checkForBorders(true));
+
+        whitepawn0.checkForBorders(true);
+        whitepawn1.checkForBorders(true);
+        whitepawn2.checkForBorders(true);
+        whitepawn3.checkForBorders(true);
+        whitepawn4.checkForBorders(true);
+        whitepawn5.checkForBorders(true);
+        whitepawn6.checkForBorders(true);
+        whitepawn7.checkForBorders(true);
+        whiteking.checkForBorders(true);
+        whiteQueen.checkForBorders(true);
+        whiteHorse1.checkForBorders(true);
+        whiteHorse2.checkForBorders(true);
+        whiteElephant1.checkForBorders(true);
+        whiteElephant2.checkForBorders(true);
+        whiteRook1.checkForBorders(true);
+        whiteRook2.checkForBorders(true);
+
 }
 
 
 
 protected void updateBlackStrokes(){
-    if(!blackStrokes.isEmpty()){
-        blackStrokes.clear();
-    }
-    blackStrokes.add(pawn0.checkForBorders(false));
 
-    blackStrokes.add(pawn1.checkForBorders(false));
+        pawn0.checkForBorders(false);
 
-    blackStrokes.add(pawn2.checkForBorders(false));
-    blackStrokes.add(pawn3.checkForBorders(false));
-    blackStrokes.add(pawn4.checkForBorders(false));
-    blackStrokes.add(pawn5.checkForBorders(false));
-    blackStrokes.add(pawn6.checkForBorders(false));
-    blackStrokes.add(pawn7.checkForBorders(false));
-    blackStrokes.add(king.checkForBorders(false));
-    blackStrokes.add(blackQueen.checkForBorders(false));
-    blackStrokes.add(blackHorse1.checkForBorders(false));
-    blackStrokes.add(blackHorse2.checkForBorders(false));
-    blackStrokes.add(blackElephant1.checkForBorders(false));
-    blackStrokes.add(blackElephant2.checkForBorders(false));
-    blackStrokes.add(blackRook1.checkForBorders(false));
-    blackStrokes.add(blackRook2.checkForBorders(false));
+        pawn1.checkForBorders(false);
+
+        pawn2.checkForBorders(false);
+        pawn3.checkForBorders(false);
+        pawn4.checkForBorders(false);
+        pawn5.checkForBorders(false);
+        pawn6.checkForBorders(false);
+        pawn7.checkForBorders(false);
+        king.checkForBorders(false);
+        blackQueen.checkForBorders(false);
+        blackHorse1.checkForBorders(false);
+        blackHorse2.checkForBorders(false);
+        blackElephant1.checkForBorders(false);
+        blackElephant2.checkForBorders(false);
+        blackRook1.checkForBorders(false);
+        blackRook2.checkForBorders(false);
 
     }
 

@@ -48,13 +48,13 @@ protected void checkingForOponnets(int x, int y, boolean yourFigure){
         redlistX.add(x);
         redlistY.add(y);
 
-if(Chess.getWhiteking().getX()==x && Chess.getWhiteking().getY()==y){
+    if(Chess.getWhiteking().getX()==x && Chess.getWhiteking().getY()==y){
    Chess.setWhiteKingIsUnderAttack(true);
 
 }
         if(Chess.getKing().getX()==x && Chess.getKing().getY()==y){
+       
             Chess.setBlackKingIsunderAttack(true);
-            System.out.println(getClass().toString());
         }
     }
 

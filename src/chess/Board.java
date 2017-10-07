@@ -61,8 +61,8 @@ chess[i][j].addActionListener(new Listener(i,j));
                 setNewXAndY(a, b);
                 clearPossibleVariants();
                 white = !white;
-                updateBlackStrokes();
                 updateWhiteStrokes();
+                updateBlackStrokes();
             } else if (chess[a][b].getIcon() != null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
@@ -85,10 +85,9 @@ chess[i][j].addActionListener(new Listener(i,j));
 
                 setNewXAndY(a, b);
                 clearPossibleVariants();
-                updateBlackStrokes();
-                updateWhiteStrokes();
                 white = !white;
-
+updateWhiteStrokes();
+updateBlackStrokes();
 
             }
         }
@@ -192,12 +191,12 @@ if(white){
 else{
     list = nameOfTheFigure.checkForBorders(false);
 }
-/*if(blackKingIsunderAttack){
+if(blackKingIsunderAttack){
     chhckForBlackStrokes();
 }
 else if(whiteKingIsUnderAttack){
     checkForWhiteStrokes();
-}*/
+}
 
         showPossibleVariants();
 
