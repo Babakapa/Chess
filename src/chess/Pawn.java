@@ -16,6 +16,7 @@ this.y = y;
 setFirstStep();
 }
 
+
     @Override
     public LinkedList checkForBorders(boolean bp) {
         if (listY != null || listX != null) {
@@ -28,12 +29,12 @@ setFirstStep();
         }
         if(x!=-1 && y!=-1) {
             if (firstStep) {
-                if (Board.checkIcon(x, y + 1) == null) {
+                if (Board.checkIcon(x, y + 1) == null&& !Chess.checkForCorrectness(x,y+1)) {
 
                     listX.add(x);
                     listY.add(y + 1);
 
-                    if (Board.checkIcon(x, y + 2) == null) {
+                    if (Board.checkIcon(x, y + 2) == null&& !Chess.checkForCorrectness(x,y+2)) {
                         listX.add(x);
                         listY.add(y + 2);
                     }

@@ -52,8 +52,7 @@ protected void checkingForOponnets(int x, int y, boolean yourFigure){
    Chess.setWhiteKingIsUnderAttack(true);
 
 }
-        if(Chess.getKing().getX()==x && Chess.getKing().getY()==y){
-       
+        if(Chess.getKing().getX()==x && Chess.getKing().getY()==y) {
             Chess.setBlackKingIsunderAttack(true);
         }
     }

@@ -201,6 +201,7 @@ protected void updateBlackStrokes(){
 
 public static boolean checkForAttack(int x, int y, boolean white){
     if(white) {
+
         if (pawn0.getX() == x && pawn0.getY() == y)
             return true;
         if (pawn1.getX() == x && pawn1.getY() == y )
@@ -271,5 +272,78 @@ public static boolean checkForAttack(int x, int y, boolean white){
     return false;
 }
 
+    public static boolean checkForCorrectness(int x, int y) {
 
+
+            if (pawn0.getX() == x && pawn0.getY() == y)
+                return true;
+            if (pawn1.getX() == x && pawn1.getY() == y )
+                return true;
+            if (pawn2.getX() == x && pawn2.getY() == y )
+                return true;
+            if (pawn3.getX() == x && pawn3.getY() == y )
+                return true;
+            if (pawn4.getX() == x && pawn4.getY() == y )
+                return true;
+            if (pawn5.getX() == x && pawn5.getY() == y )
+                return true;
+            if (pawn6.getX() == x && pawn6.getY() == y)
+                return true;
+            if (pawn7.getX() == x && pawn7.getY() == y)
+                return true;
+            if (blackRook1.getX() == x && blackRook1.getY()==y)
+                return true;
+            if (blackRook2.getX() == x && blackRook2.getY()==y)
+                return true;
+            if (blackHorse1.getX() == x && blackHorse1.getY() == y )
+                return true;
+            if (blackHorse2.getX() == x && blackHorse2.getY() == y )
+                return true;
+            if (king.getX() == x && king.getY() == y )
+                return true;
+
+            if (blackQueen.getX() == x && blackQueen.getY() == y )
+                return true;
+            if (blackElephant1.getX() == x && blackElephant1.getY() == y )
+                return true;
+            if (blackElephant2.getX() == x && blackElephant2.getY() == y)
+                return true;
+
+
+            if (whitepawn0.getX() == x && whitepawn0.getY() == y )
+                return true;
+            if (whitepawn1.getX() == x && whitepawn1.getY() == y )
+                return true;
+            if (whitepawn2.getX() == x && whitepawn2.getY() == y )
+                return true;
+            if (whitepawn3.getX() == x && whitepawn3.getY() == y )
+                return true;
+            if (whitepawn4.getX() == x && whitepawn4.getY() == y )
+                return true;
+            if (whitepawn5.getX() == x && whitepawn5.getY() == y )
+                return true;
+            if (whitepawn6.getX() == x && whitepawn6.getY() == y )
+                return true;
+            if (whitepawn7.getX() == x && whitepawn7.getY() == y )
+                return true;
+            if (whiteRook1.getX() == x && whiteRook1.getY() == y )
+                return true;
+            if (whiteRook2.getX() == x && whiteRook2.getY() == y )
+                return true;
+            if (whiteHorse1.getX() == x && whiteHorse1.getY() == y )
+                return true;
+            if (whiteHorse2.getX() == x && whiteHorse2.getY() == y )
+                return true;
+            if (whiteking.getX() == x && whiteking.getY() == y )
+                return true;
+            if (whiteQueen.getX() == x && whiteQueen.getY() == y )
+                return true;
+            if (whiteElephant1.getX() == x && whiteElephant1.getY() == y )
+                return true;
+            if (whiteElephant2.getX() == x && whiteElephant2.getY() == y )
+                return true;
+
+    return false;
+
+    }
 }

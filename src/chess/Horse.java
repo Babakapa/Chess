@@ -22,7 +22,7 @@ public Horse(int x, int y){
         if(x!=-1 && y!=-1) {
         if (x - 2 > -1) {
             if (y + 1 < 8) {
-                if (Board.checkIcon(x - 2, y + 1) == null) {
+                if (Board.checkIcon(x - 2, y + 1) == null && !Chess.checkForCorrectness(x -2 ,y+1)) {
                     listX.add(x - 2);
                     listY.add(y + 1);
                 } else checkingForOponnets(x - 2, y + 1, bp);
@@ -30,7 +30,7 @@ public Horse(int x, int y){
 
 
             if (y - 1 > -1) {
-                if (Board.checkIcon(x - 2, y - 1) == null) {
+                if (Board.checkIcon(x - 2, y - 1) == null && !Chess.checkForCorrectness(x-2,y-1)) {
                     listX.add(x - 2);
                     listY.add(y - 1);
                 } else checkingForOponnets(x - 2, y - 1, bp);
@@ -38,13 +38,13 @@ public Horse(int x, int y){
         }
         if (x + 2 < 8) {
             if (y + 1 < 8) {
-                if (Board.checkIcon(x + 2, y + 1) == null) {
+                if (Board.checkIcon(x + 2, y + 1) == null&& !Chess.checkForCorrectness(x+2,y+1)) {
                     listX.add(x + 2);
                     listY.add(y + 1);
                 } else checkingForOponnets(x + 2, y + 1, bp);
             }
             if (y - 1 > -1) {
-                if (Board.checkIcon(x + 2, y - 1) == null) {
+                if (Board.checkIcon(x + 2, y - 1) == null&& !Chess.checkForCorrectness(x+2,y-1)) {
                     listX.add(x + 2);
                     listY.add(y - 1);
                 } else checkingForOponnets(x + 2, y - 1, bp);
@@ -52,13 +52,13 @@ public Horse(int x, int y){
         }
         if (y - 2 > -1) {
             if (x - 1 > -1) {
-                if (Board.checkIcon(x - 1, y - 2) == null) {
+                if (Board.checkIcon(x - 1, y - 2) == null&& !Chess.checkForCorrectness(x-1,y-2)) {
                     listX.add(x - 1);
                     listY.add(y - 2);
                 } else checkingForOponnets(x - 1, y - 2, bp);
             }
             if (x + 1 < 8) {
-                if (Board.checkIcon(x + 1, y - 2) == null) {
+                if (Board.checkIcon(x + 1, y - 2) == null&& !Chess.checkForCorrectness(x+1,y-2)) {
                     listX.add(x + 1);
                     listY.add(y - 2);
                 } else checkingForOponnets(x + 1, y - 2, bp);
@@ -66,13 +66,13 @@ public Horse(int x, int y){
         }
         if (y + 2 < 8) {
             if (x - 1 > -1) {
-                if (Board.checkIcon(x - 1, y + 2) == null) {
+                if (Board.checkIcon(x - 1, y + 2) == null&& !Chess.checkForCorrectness(x-1,y+2)) {
                     listX.add(x - 1);
                     listY.add(y + 2);
                 } else checkingForOponnets(x - 1, y + 2, bp);
             }
             if (x + 1 < 8) {
-                if (Board.checkIcon(x + 1, y + 2) == null) {
+                if (Board.checkIcon(x + 1, y + 2) == null&& !Chess.checkForCorrectness(x+1,y+2)) {
                     listX.add(x + 1);
                     listY.add(y + 2);
                 } else checkingForOponnets(x + 1, y + 2, bp);

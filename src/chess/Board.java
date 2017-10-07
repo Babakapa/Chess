@@ -33,12 +33,7 @@ for(i = 0;i < chess.length;i++)
         add(chess[i][j]);
 chess[i][j].addActionListener(new Listener(i,j));
     }
-
-
    makeField();
-
-
-
     }
 
 
@@ -61,6 +56,7 @@ chess[i][j].addActionListener(new Listener(i,j));
                 setNewXAndY(a, b);
                 clearPossibleVariants();
                 white = !white;
+                setKingAttack();
                 updateWhiteStrokes();
                 updateBlackStrokes();
             } else if (chess[a][b].getIcon() != null) {
@@ -86,6 +82,7 @@ chess[i][j].addActionListener(new Listener(i,j));
                 setNewXAndY(a, b);
                 clearPossibleVariants();
                 white = !white;
+                setKingAttack();
 updateWhiteStrokes();
 updateBlackStrokes();
 
@@ -186,13 +183,15 @@ updateBlackStrokes();
 
     private void processing() {
 if(white){
+    list.clear();
     list = nameOfTheFigure.checkForBorders(true);
 }
 else{
+    list.clear();
     list = nameOfTheFigure.checkForBorders(false);
 }
 if(blackKingIsunderAttack){
-    chhckForBlackStrokes();
+   chhckForBlackStrokes();
 }
 else if(whiteKingIsUnderAttack){
     checkForWhiteStrokes();
@@ -206,7 +205,7 @@ else if(whiteKingIsUnderAttack){
     private void chhckForBlackStrokes() {
         int x = nameOfTheFigure.getX();
         int y = nameOfTheFigure.getY();
-        boolean bp = blackKingIsunderAttack;
+
         LinkedList<LinkedList<Integer>> temp = new LinkedList<>();
         temp.add(new LinkedList<>());
         temp.add(new LinkedList<>());
@@ -217,25 +216,25 @@ else if(whiteKingIsUnderAttack){
 
         for(int i = 0; i < temp.get(0).size();i++){
             nameOfTheFigure.setXAndY(temp.get(0).get(i),temp.get(1).get(i));
-            //blackKingIsunderAttack = false;
+            blackKingIsunderAttack = false;
 updateWhiteStrokes();
-
             if(blackKingIsunderAttack){
                 temp.get(0).remove(i);
                 temp.get(1).remove(i);
                     i--;
             }
-            nameOfTheFigure.setXAndY(x,y);
-            updateWhiteStrokes();
-          //  blackKingIsunderAttack = bp;
-        }
 
+
+        }
 list.get(0).clear();
         list.get(1).clear();
         for(int i = 0;i<temp.get(0).size();i++){
             list.get(0).add(temp.get(0).get(i));
             list.get(1).add(temp.get(1).get(i));
         }
+
+        nameOfTheFigure.setXAndY(x,y);
+        blackKingIsunderAttack = true;
 
     }
 
@@ -280,17 +279,16 @@ public static Icon checkIcon(int a, int b){
         return chess[b][a].getIcon();
     }
 public static boolean checkForCorrectness(int x, int y){
-    ChessPropreties temp = null;
+
     if(white){
-        temp = gettingRightBlackObject(x,y);
+
     }
     else if(!white){
-        temp = gettingRightWhiteObject(x,y);
+
     }
 
- if(temp!=null && temp.getX()==x && temp.getY()==y){
-     return true;
- }
+
+
     return false;
 }
 
