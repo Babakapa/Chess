@@ -4,7 +4,7 @@ package chess;
 import java.util.LinkedList;
 
 public class Pawn extends ChessPropreties{
-    private boolean firstStep = true;
+
 public Pawn(int x, int y){
 this.x = x;
 this.y = y;
@@ -13,7 +13,6 @@ this.y = y;
 public void setXAndY(int x, int y){
 this.x = x;
 this.y = y;
-setFirstStep();
 }
 
 
@@ -28,7 +27,7 @@ setFirstStep();
             redlistX.clear();
         }
         if(x!=-1 && y!=-1) {
-            if (firstStep) {
+            if (pawnFirstStep) {
                 if (Board.checkIcon(x, y + 1) == null&& !Chess.checkForCorrectness(x,y+1)) {
 
                     listX.add(x);
@@ -53,9 +52,7 @@ setFirstStep();
 return moving();
 }
 
-    public void setFirstStep() {
-         firstStep = false;
-    }
+
 
 
 

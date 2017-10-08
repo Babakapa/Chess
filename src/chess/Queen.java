@@ -38,10 +38,9 @@ return moving();
         j = y + 1;
 
         for (i = x + 1; i < 8 && j < 8; i++, j++) {
-            if (Board.checkIcon(i, j) == null && !Chess.checkForCorrectness(i,j)) {
+            if (!Chess.checkForCorrectness(i,j)) {
                 listX.add(i);
                 listY.add(j);
-
             }
             else{
                 checkingForOponnets(i, j, bp);
@@ -53,7 +52,7 @@ return moving();
     public void checkUpLeft(boolean bp) {
         j = y - 1;
         for(i = x + 1; i < 8 && j > -1 ; i++, j--) {
-            if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+            if(!Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }
@@ -68,7 +67,7 @@ return moving();
     public void checkDownRight(boolean bp) {
         j = y + 1;
         for(i = x - 1; i > -1 && j < 8 ; i--, j++) {
-            if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+            if(!Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }
@@ -84,7 +83,7 @@ return moving();
     public void checkDownLeft(boolean bp) {
         j = y - 1;
         for(i = x - 1; i > -1 && j > -1 ; i--, j--) {
-            if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+            if(!Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }
@@ -100,7 +99,7 @@ return moving();
     @Override
     public void checkUp(boolean bp) {
         for (int i = y + 1; i < 8; i++) {
-            if (Board.checkIcon(x, i) == null&& !Chess.checkForCorrectness(x,i)) {
+            if (!Chess.checkForCorrectness(x,i)) {
                 listX.add(x);
                 listY.add(i);
             }
@@ -114,7 +113,7 @@ return moving();
     @Override
     public void checkDown(boolean bp) {
         for (int i = y - 1; i > -1; i--) {
-            if (Board.checkIcon(x, i) == null&& !Chess.checkForCorrectness(x,i)) {
+            if (!Chess.checkForCorrectness(x,i)) {
                 listX.add(x);
                 listY.add(i);
             }
@@ -128,7 +127,7 @@ return moving();
     @Override
     public void checkRight(boolean bp) {
         for (int i = x + 1; i < 8; i++) {
-            if (Board.checkIcon(i, y) == null&& !Chess.checkForCorrectness(i,y)) {
+            if (!Chess.checkForCorrectness(i,y)) {
                 listX.add(i);
                 listY.add(y);
             }
@@ -142,7 +141,7 @@ return moving();
     @Override
     public void checkLeft(boolean bp) {
         for (int i = x - 1; i > -1; i--) {
-            if (Board.checkIcon(i, y) == null&& !Chess.checkForCorrectness(i,y)) {
+            if (!Chess.checkForCorrectness(i,y)) {
                 listX.add(i);
                 listY.add(y);
             }

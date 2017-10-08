@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * Created by Асус on 17.09.2017.
  */
 public class WhitePawn extends ChessPropreties {
-    private boolean firstStep = true;
+
     public WhitePawn(int x, int y){
         this.x = x;
         this.y = y;
@@ -15,7 +15,6 @@ public class WhitePawn extends ChessPropreties {
     public void setXAndY(int x, int y){
         this.x = x;
         this.y = y;
-        setFirstStep();
     }
 
 
@@ -31,13 +30,13 @@ public class WhitePawn extends ChessPropreties {
             redlistX.clear();
         }
         if(x!=-1 && y!=-1) {
-            if (firstStep) {
-                if (Board.checkIcon(x, y - 1) == null && !Chess.checkForCorrectness(x,y-1)) {
+            if (pawnFirstStep) {
+                if (!Chess.checkForCorrectness(x,y-1)) {
 
                     listX.add(x);
                     listY.add(y - 1);
 
-                    if (Board.checkIcon(x, y - 2) == null&& !Chess.checkForCorrectness(x,y-2)) {
+                    if (!Chess.checkForCorrectness(x,y-2)) {
                         listX.add(x);
                         listY.add(y - 2);
                     }
@@ -56,8 +55,5 @@ public class WhitePawn extends ChessPropreties {
 return moving();
     }
 
-    public void setFirstStep() {
-        firstStep = false;
-    }
 
 }

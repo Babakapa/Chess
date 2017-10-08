@@ -1,8 +1,8 @@
 package chess;
-import sun.management.LazyCompositeData;
+
 
 import java.util.LinkedList;
-import java.util.zip.ZipEntry;
+
 
 public abstract class ChessPropreties{
 
@@ -13,8 +13,11 @@ public abstract class ChessPropreties{
     protected LinkedList<Integer> listY = new LinkedList<>();
     protected LinkedList<Integer> redlistX = new LinkedList<>();
     protected LinkedList<Integer> redlistY = new LinkedList<>();
+protected boolean pawnFirstStep = true;
 
-
+public void setPawnFirstStep(){
+    pawnFirstStep = false;
+}
     public abstract LinkedList checkForBorders(boolean bp);
 
     protected LinkedList moving() {
@@ -58,6 +61,8 @@ protected void checkingForOponnets(int x, int y, boolean yourFigure){
     }
 
 }
+
+
 
 
 }

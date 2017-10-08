@@ -29,7 +29,7 @@ public class King extends ChessPropreties {
             for (int j = y - 1; j < y + 2; j++) {
 if(x!=i || y!=j)
                     if (i > -1 && i < 8 && j > -1 && j < 8) {
-    if( Board.checkIcon(i,j)==null && !Chess.checkForCorrectness(i,j)) {
+    if(!Chess.checkForCorrectness(i,j)) {
         listX.add(i);
         listY.add(j);
     }

@@ -111,8 +111,11 @@ updateBlackStrokes();
 
     }
     private void setNewXAndY(int a, int b) {
-
-        nameOfTheFigure.setXAndY(b,a);
+if(nameOfTheFigure.getClass()==Pawn.class || nameOfTheFigure.getClass()==WhitePawn.class) {
+    nameOfTheFigure.setXAndY(b, a);
+    nameOfTheFigure.setPawnFirstStep();
+}
+else nameOfTheFigure.setXAndY(b,a);
 
     }
 
@@ -190,12 +193,11 @@ else{
     list.clear();
     list = nameOfTheFigure.checkForBorders(false);
 }
-if(blackKingIsunderAttack){
+if(!white)
    chhckForBlackStrokes();
-}
-else if(whiteKingIsUnderAttack){
+else
     checkForWhiteStrokes();
-}
+
 
         showPossibleVariants();
 
@@ -207,30 +209,58 @@ else if(whiteKingIsUnderAttack){
         int y = nameOfTheFigure.getY();
 
         LinkedList<LinkedList<Integer>> temp = new LinkedList<>();
-        temp.add(new LinkedList<>());
-        temp.add(new LinkedList<>());
+        for (int i = 0;i<4;i++) {
+            temp.add(new LinkedList<>());
+        }
         for(int i = 0;i<list.get(0).size();i++){
             temp.get(0).add(list.get(0).get(i));
             temp.get(1).add(list.get(1).get(i));
         }
 
+        for(int i = 0;i<list.get(2).size();i++){
+            temp.get(2).add(list.get(2).get(i));
+            temp.get(3).add(list.get(3).get(i));
+        }
+
         for(int i = 0; i < temp.get(0).size();i++){
             nameOfTheFigure.setXAndY(temp.get(0).get(i),temp.get(1).get(i));
             blackKingIsunderAttack = false;
-updateWhiteStrokes();
+            updateWhiteStrokes();
             if(blackKingIsunderAttack){
                 temp.get(0).remove(i);
                 temp.get(1).remove(i);
                     i--;
             }
+        }
 
+
+        for(int i = 0; i < temp.get(2).size();i++){
+            ChessPropreties tempFigure = gettingRightWhiteObject(temp.get(2).get(i),temp.get(3).get(i));
+            int tempX = tempFigure.getX();
+            int tempY = tempFigure.getY();
+            tempFigure.setXAndY(-1,-1);
+            nameOfTheFigure.setXAndY(temp.get(2).get(i),temp.get(3).get(i));
+            blackKingIsunderAttack = false;
+            updateWhiteStrokes();
+            if(blackKingIsunderAttack){
+                temp.get(2).remove(i);
+                temp.get(3).remove(i);
+                i--;
+            }
+            tempFigure.setXAndY(tempX,tempY);
 
         }
-list.get(0).clear();
+        list.get(0).clear();
         list.get(1).clear();
+        list.get(2).clear();
+        list.get(3).clear();
         for(int i = 0;i<temp.get(0).size();i++){
             list.get(0).add(temp.get(0).get(i));
             list.get(1).add(temp.get(1).get(i));
+        }
+        for(int i = 0;i<temp.get(2).size();i++){
+            list.get(2).add(temp.get(2).get(i));
+            list.get(3).add(temp.get(3).get(i));
         }
 
         nameOfTheFigure.setXAndY(x,y);
@@ -239,6 +269,69 @@ list.get(0).clear();
     }
 
     private void checkForWhiteStrokes() {
+        int x = nameOfTheFigure.getX();
+        int y = nameOfTheFigure.getY();
+
+        LinkedList<LinkedList<Integer>> temp = new LinkedList<>();
+        for (int i = 0;i<4;i++) {
+            temp.add(new LinkedList<>());
+        }
+        for(int i = 0;i<list.get(0).size();i++){
+            temp.get(0).add(list.get(0).get(i));
+            temp.get(1).add(list.get(1).get(i));
+        }
+
+        for(int i = 0;i<list.get(2).size();i++){
+            temp.get(2).add(list.get(2).get(i));
+            temp.get(3).add(list.get(3).get(i));
+        }
+
+        for(int i = 0; i < temp.get(0).size();i++){
+            nameOfTheFigure.setXAndY(temp.get(0).get(i),temp.get(1).get(i));
+            whiteKingIsUnderAttack = false;
+            updateBlackStrokes();
+            if(whiteKingIsUnderAttack){
+                temp.get(0).remove(i);
+                temp.get(1).remove(i);
+                i--;
+            }
+
+
+        }
+        for(int i = 0; i < temp.get(2).size();i++){
+            ChessPropreties tempFigure = gettingRightBlackObject(temp.get(2).get(i),temp.get(3).get(i));
+            int tempX = tempFigure.getX();
+            int tempY = tempFigure.getY();
+            tempFigure.setXAndY(-1,-1);
+            nameOfTheFigure.setXAndY(temp.get(2).get(i),temp.get(3).get(i));
+            whiteKingIsUnderAttack = false;
+            updateBlackStrokes();
+            if(whiteKingIsUnderAttack){
+                temp.get(2).remove(i);
+                temp.get(3).remove(i);
+                i--;
+            }
+            tempFigure.setXAndY(tempX,tempY);
+
+        }
+
+        list.get(0).clear();
+        list.get(1).clear();
+        list.get(2).clear();
+        list.get(3).clear();
+        for(int i = 0;i<temp.get(0).size();i++){
+            list.get(0).add(temp.get(0).get(i));
+            list.get(1).add(temp.get(1).get(i));
+        }
+        for(int i = 0;i<temp.get(2).size();i++){
+            list.get(2).add(temp.get(2).get(i));
+            list.get(3).add(temp.get(3).get(i));
+        }
+
+        nameOfTheFigure.setXAndY(x,y);
+        whiteKingIsUnderAttack = true;
+
+
     }
 
     private void showPossibleVariants() {

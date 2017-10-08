@@ -33,7 +33,7 @@ return moving();
         j = y + 1;
 
 for(i = x + 1; i < 8 && j < 8 ; i++, j++) {
-if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+if(!Chess.checkForCorrectness(i,j)){
     listX.add(i);
     listY.add(j);
 }
@@ -47,7 +47,7 @@ break;
     public void checkDownRight(boolean bp) {
         j = y + 1;
         for(i = x - 1; i > -1 && j < 8 ; i--, j++) {
-            if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+            if(!Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }
@@ -66,7 +66,7 @@ break;
     public void checkDownLeft(boolean bp) {
         j = y - 1;
         for(i = x - 1; i > -1 && j > -1 ; i--, j--) {
-            if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+            if(!Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }
@@ -81,7 +81,7 @@ break;
     public void checkUpLeft(boolean bp) {
         j = y - 1;
         for(i = x + 1; i < 8 && j > -1 ; i++, j--) {
-            if(Board.checkIcon(i,j)==null&& !Chess.checkForCorrectness(i,j)){
+            if(Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }

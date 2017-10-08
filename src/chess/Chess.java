@@ -1,9 +1,8 @@
 package chess;
 
 import javax.swing.*;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
+
 
 public abstract class Chess extends JFrame{
     protected static King king = new King(4,0);
@@ -151,8 +150,6 @@ public static ChessPropreties gettingRightBlackObject(int x, int y){
     return null;
 }
 
-    protected LinkedList<LinkedList<LinkedList<Integer>>> blackStrokes = new LinkedList<>();
-    protected LinkedList<LinkedList<LinkedList<Integer>>> whiteStrokes = new LinkedList<>();
 protected void updateWhiteStrokes(){
 
         whitepawn0.checkForBorders(true);
