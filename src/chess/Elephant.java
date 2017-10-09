@@ -29,7 +29,7 @@ public Elephant(int x, int y){
 return moving();
     }
 @Override
-    public void checkUpRight(boolean bp) {
+    public void checkDownRight(boolean bp) {
         j = y + 1;
 
 for(i = x + 1; i < 8 && j < 8 ; i++, j++) {
@@ -44,7 +44,7 @@ break;
 }
     }
 @Override
-    public void checkDownRight(boolean bp) {
+    public void checkUpRight(boolean bp) {
         j = y + 1;
         for(i = x - 1; i > -1 && j < 8 ; i--, j++) {
             if(!Chess.checkForCorrectness(i,j)){
@@ -63,7 +63,7 @@ break;
 
     }
 @Override
-    public void checkDownLeft(boolean bp) {
+    public void checkUpLeft(boolean bp) {
         j = y - 1;
         for(i = x - 1; i > -1 && j > -1 ; i--, j--) {
             if(!Chess.checkForCorrectness(i,j)){
@@ -78,10 +78,10 @@ break;
 
     }
 @Override
-    public void checkUpLeft(boolean bp) {
+    public void checkDownLeft(boolean bp) {
         j = y - 1;
         for(i = x + 1; i < 8 && j > -1 ; i++, j--) {
-            if(Chess.checkForCorrectness(i,j)){
+            if(!Chess.checkForCorrectness(i,j)){
                 listX.add(i);
                 listY.add(j);
             }

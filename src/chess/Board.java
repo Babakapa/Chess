@@ -3,8 +3,7 @@ package chess;
 
 
 import javax.swing.*;
-import java.awt.GridLayout;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
@@ -18,7 +17,8 @@ private Icon tempIMG = null;
     private static ChessPropreties nameOfTheFigure = null;
 
   private LinkedList<Color> tempList = new LinkedList<>();
-
+private JPanel panelForChess = new JPanel();
+private JLabel labelForAttack = new Signature();
 private int i = 0;
 private int j = 0;
 
@@ -26,14 +26,18 @@ private int j = 0;
 
 
     public Board() {
-setLayout(new GridLayout(8,8));
+        setLayout(new BorderLayout());
+panelForChess.setLayout(new GridLayout(8,8));
 for(i = 0;i < chess.length;i++)
     for(j = 0;j < chess[i].length;j++) {
         chess[i][j] = new JButton();
-        add(chess[i][j]);
+        panelForChess.add(chess[i][j]);
 chess[i][j].addActionListener(new Listener(i,j));
     }
    makeField();
+
+add(panelForChess,BorderLayout.CENTER);
+add(labelForAttack,BorderLayout.NORTH);
     }
 
 
@@ -59,6 +63,7 @@ chess[i][j].addActionListener(new Listener(i,j));
                 setKingAttack();
                 updateWhiteStrokes();
                 updateBlackStrokes();
+                kingAttack();
             } else if (chess[a][b].getIcon() != null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
@@ -85,9 +90,19 @@ chess[i][j].addActionListener(new Listener(i,j));
                 setKingAttack();
 updateWhiteStrokes();
 updateBlackStrokes();
-
+kingAttack();
             }
         }
+    }
+
+    private void kingAttack() {
+        if(blackKingIsunderAttack){
+            labelForAttack.setText("Black king is under Attack");
+        }
+        else if(whiteKingIsUnderAttack){
+            labelForAttack.setText("White king is under Attack");
+        }
+        else labelForAttack.setText(null);
     }
 
     private void removeFromBoard(int x, int y) {

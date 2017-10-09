@@ -72,7 +72,7 @@ public Horse(int x, int y){
                 } else checkingForOponnets(x - 1, y + 2, bp);
             }
             if (x + 1 < 8) {
-                if (Chess.checkForCorrectness(x+1,y+2)) {
+                if (!Chess.checkForCorrectness(x+1,y+2)) {
                     listX.add(x + 1);
                     listY.add(y + 2);
                 } else checkingForOponnets(x + 1, y + 2, bp);
