@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 
 public class Board extends Chess{
-private static JButton [][] chess  = new JButton[8][8];
+
 private Icon tempIMG = null;
 
     private static ChessPropreties nameOfTheFigure = null;
@@ -21,7 +21,7 @@ private JPanel panelForChess = new JPanel();
 private JLabel labelForAttack = new Signature();
 private int i = 0;
 private int j = 0;
-
+private static ChooseYourFigure addingFigure = null;
 
 
 
@@ -64,6 +64,7 @@ add(labelForAttack,BorderLayout.NORTH);
                 updateWhiteStrokes();
                 updateBlackStrokes();
                 kingAttack();
+                checkForPawnGetEnd();
             } else if (chess[a][b].getIcon() != null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
@@ -91,8 +92,21 @@ add(labelForAttack,BorderLayout.NORTH);
 updateWhiteStrokes();
 updateBlackStrokes();
 kingAttack();
+checkForPawnGetEnd();
             }
         }
+    }
+
+    private static void checkForPawnGetEnd() {
+        if(nameOfTheFigure.getClass()==Pawn.class && nameOfTheFigure.getY()==7){
+addingFigure = new ChooseYourFigure(nameOfTheFigure,nameOfTheFigure.getX(),nameOfTheFigure.getY());
+nameOfTheFigure.setXAndY(-1,-1);
+        }
+else if(nameOfTheFigure.getClass()==WhitePawn.class && nameOfTheFigure.getY()==0){
+            addingFigure = new ChooseYourFigure(nameOfTheFigure,nameOfTheFigure.getX(),nameOfTheFigure.getY());
+nameOfTheFigure.setXAndY(-1,-1);
+        }
+
     }
 
     private void kingAttack() {
@@ -129,6 +143,8 @@ kingAttack();
 if(nameOfTheFigure.getClass()==Pawn.class || nameOfTheFigure.getClass()==WhitePawn.class) {
     nameOfTheFigure.setXAndY(b, a);
     nameOfTheFigure.setPawnFirstStep();
+
+
 }
 else nameOfTheFigure.setXAndY(b,a);
 

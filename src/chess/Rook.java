@@ -2,9 +2,7 @@ package chess;
 
 import java.util.LinkedList;
 
-/**
- * Created by Асус on 14.06.2017.
- */
+
 public class Rook extends ChessPropreties implements RightLeftUpDownMove{
 public Rook(int x, int y){
     setXAndY(x,y);

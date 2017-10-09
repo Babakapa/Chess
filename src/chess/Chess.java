@@ -1,15 +1,16 @@
 package chess;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public abstract class Chess extends JFrame{
+    protected static JButton [][] chess  = new JButton[8][8];
     protected static King king = new King(4,0);
     protected static Pawn pawn0 = new Pawn(0,1);
     protected static Pawn pawn1 = new Pawn(1,1);
-
-
 
     protected static Pawn pawn2 = new Pawn(2,1);
     protected static Pawn pawn3 = new Pawn(3,1);
@@ -111,9 +112,18 @@ protected static ChessPropreties gettingRightWhiteObject(int x, int y) {
         return whiteRook2;
     if (x == whiteking.getX() && y == whiteking.getY())
         return whiteking;
+    for(ChessPropreties ch:addingWhiteFigures){
+        if(ch.getX()==x && y == ch.getY()){
+            return ch;
+        }
+    }
     return null;
 }
-public static ChessPropreties gettingRightBlackObject(int x, int y){
+
+    protected static ArrayList<ChessPropreties> addingWhiteFigures = new ArrayList<>();
+    protected static ArrayList<ChessPropreties> addingBlackFigures = new ArrayList<>();
+
+    public static ChessPropreties gettingRightBlackObject(int x, int y){
 
     if (x == pawn0.getX() && y == pawn0.getY())
         return pawn0;
@@ -147,11 +157,18 @@ public static ChessPropreties gettingRightBlackObject(int x, int y){
         return blackHorse2;
     if (x == king.getX() && y == king.getY())
         return king;
+    for(ChessPropreties ch:addingBlackFigures){
+        if(ch.getX()==x && y == ch.getY()){
+            return ch;
+        }
+    }
     return null;
 }
 
 protected void updateWhiteStrokes(){
-
+    for(ChessPropreties ch:addingWhiteFigures){
+       ch.checkForBorders(true);
+    }
         whitepawn0.checkForBorders(true);
         whitepawn1.checkForBorders(true);
         whitepawn2.checkForBorders(true);
@@ -174,7 +191,9 @@ protected void updateWhiteStrokes(){
 
 
 protected void updateBlackStrokes(){
-
+    for(ChessPropreties ch:addingBlackFigures){
+        ch.checkForBorders(false);
+    }
         pawn0.checkForBorders(false);
 
         pawn1.checkForBorders(false);
@@ -231,6 +250,11 @@ public static boolean checkForAttack(int x, int y, boolean white){
             return true;
         if (blackElephant2.getX() == x && blackElephant2.getY() == y)
             return true;
+        for(ChessPropreties ch:addingBlackFigures){
+           if(ch.getX()==x && ch.getY()==y){
+               return true;
+           }
+        }
     }
     else if(!white){
         if (whitepawn0.getX() == x && whitepawn0.getY() == y )
@@ -265,12 +289,25 @@ public static boolean checkForAttack(int x, int y, boolean white){
             return true;
         if (whiteElephant2.getX() == x && whiteElephant2.getY() == y )
             return true;
+        for(ChessPropreties ch:addingWhiteFigures){
+            if(ch.getX()==x && ch.getY()==y){
+                return true;
+            }
+        }
     }
     return false;
 }
 
     public static boolean checkForCorrectness(int x, int y) {
-
+        for(ChessPropreties ch:addingBlackFigures){
+            if(ch.getX()==x && ch.getY()==y){
+                return true;
+            }
+        } for(ChessPropreties ch:addingWhiteFigures){
+            if(ch.getX()==x && ch.getY()==y){
+                return true;
+            }
+        }
 
             if (pawn0.getX() == x && pawn0.getY() == y)
                 return true;
@@ -342,5 +379,46 @@ public static boolean checkForAttack(int x, int y, boolean white){
 
     return false;
 
+    }
+    public static void createElephant(int x, int y, boolean bp){
+    if(bp) {
+        addingWhiteFigures.add(new Elephant(x, y));
+        chess[y][x].setIcon(new ImageIcon("src\\Images\\whiteelephant.png"));
+    }
+    else {
+        addingBlackFigures.add(new Elephant(x,y));
+        chess[y][x].setIcon(new ImageIcon("src\\Images\\elephant1.png"));
+    }
+    }
+    public static void createQueen(int x, int y, boolean bp){
+        if(bp)
+        {
+            addingWhiteFigures.add(new Queen(x,y));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\queenwhite.png"));
+        }
+        else {
+            addingBlackFigures.add(new Queen(x,y));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\blackqueen.png"));
+        }
+    }
+    public static void createRock(int x, int y, boolean bp){
+        if(bp) {
+            addingWhiteFigures.add(new Rook(x, y));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\whiterook.png"));
+        }
+        else {
+            addingBlackFigures.add(new Rook(x,y));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\rook1.png"));
+        }
+    }
+    public static void createHorse(int x, int y, boolean bp){
+        if(bp) {
+            addingWhiteFigures.add(new Horse(x, y));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\Horse1.png"));
+        }
+        else {
+            addingBlackFigures.add(new Horse(x,y));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\whiteHorse.png"));
+        }
     }
 }
