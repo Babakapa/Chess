@@ -15,29 +15,33 @@ public class Board extends Chess{
 private Icon tempIMG = null;
 
     private static ChessPropreties nameOfTheFigure = null;
-
+private int castlingX = -1;
+private int castlingY = -1;
+private JPanel panelForSongs = new JPanel();
   private LinkedList<Color> tempList = new LinkedList<>();
 private JPanel panelForChess = new JPanel();
 private JLabel labelForAttack = new Signature();
 private int i = 0;
 private int j = 0;
 private static ChooseYourFigure addingFigure = null;
-
-
-
+private JPanel music = Music.getInstance();
     public Board() {
         setLayout(new BorderLayout());
 panelForChess.setLayout(new GridLayout(8,8));
+        add(labelForAttack,BorderLayout.NORTH);
+
+      add(panelForChess,BorderLayout.CENTER);
+        add(music,BorderLayout.EAST);
 for(i = 0;i < chess.length;i++)
     for(j = 0;j < chess[i].length;j++) {
         chess[i][j] = new JButton();
         panelForChess.add(chess[i][j]);
-chess[i][j].addActionListener(new Listener(i,j));
+        chess[i][j].addActionListener(new Listener(i, j));
     }
+
+
    makeField();
 
-add(panelForChess,BorderLayout.CENTER);
-add(labelForAttack,BorderLayout.NORTH);
     }
 
 
@@ -140,11 +144,9 @@ nameOfTheFigure.setXAndY(-1,-1);
 
     }
     private void setNewXAndY(int a, int b) {
-if(nameOfTheFigure.getClass()==Pawn.class || nameOfTheFigure.getClass()==WhitePawn.class) {
+if(nameOfTheFigure.getClass()==Pawn.class || nameOfTheFigure.getClass()==WhitePawn.class || nameOfTheFigure.getClass()==King.class || nameOfTheFigure.getClass()==Rook.class) {
     nameOfTheFigure.setXAndY(b, a);
-    nameOfTheFigure.setPawnFirstStep();
-
-
+    nameOfTheFigure.setFirstStep();
 }
 else nameOfTheFigure.setXAndY(b,a);
 
@@ -224,15 +226,28 @@ else{
     list.clear();
     list = nameOfTheFigure.checkForBorders(false);
 }
-if(!white)
-   chhckForBlackStrokes();
-else
-    checkForWhiteStrokes();
 
+if(!white) {
+    if(nameOfTheFigure.getX()==king.getX() && nameOfTheFigure.getY()==king.getY())
+        checkForBlackCastlimg();
+    chhckForBlackStrokes();
+}
+else {
+    if(nameOfTheFigure.getX()==whiteking.getX() && nameOfTheFigure.getY()==whiteking.getY())
+        checkForWhiteCastlimg();
+    checkForWhiteStrokes();
+}
 
         showPossibleVariants();
 
 
+    }
+
+    private void checkForWhiteCastlimg() {
+
+    }
+
+    private void checkForBlackCastlimg() {
     }
 
     private void chhckForBlackStrokes() {

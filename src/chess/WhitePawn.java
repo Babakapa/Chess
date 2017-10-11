@@ -30,7 +30,7 @@ public class WhitePawn extends ChessPropreties {
             redlistX.clear();
         }
         if(x!=-1 && y!=-1) {
-            if (pawnFirstStep) {
+            if (firstStep) {
                 if (!Chess.checkForCorrectness(x,y-1)) {
 
                     listX.add(x);

@@ -27,7 +27,7 @@ this.y = y;
             redlistX.clear();
         }
         if(x!=-1 && y!=-1) {
-            if (pawnFirstStep) {
+            if (firstStep) {
                 if (Board.checkIcon(x, y + 1) == null&& !Chess.checkForCorrectness(x,y+1)) {
 
                     listX.add(x);

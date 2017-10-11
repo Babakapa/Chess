@@ -13,10 +13,13 @@ public abstract class ChessPropreties{
     protected LinkedList<Integer> listY = new LinkedList<>();
     protected LinkedList<Integer> redlistX = new LinkedList<>();
     protected LinkedList<Integer> redlistY = new LinkedList<>();
-protected boolean pawnFirstStep = true;
+protected boolean firstStep = true;
 
-public void setPawnFirstStep(){
-    pawnFirstStep = false;
+public void setFirstStep(){
+    firstStep = false;
+}
+public boolean getFirstStep(){
+    return firstStep;
 }
     public abstract LinkedList checkForBorders(boolean bp);
 
