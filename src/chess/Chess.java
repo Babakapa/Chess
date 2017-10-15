@@ -413,11 +413,11 @@ public static boolean checkForAttack(int x, int y, boolean white){
     public static void createHorse(int x, int y, boolean bp){
         if(bp) {
             addingWhiteFigures.add(new Horse(x, y));
-            chess[y][x].setIcon(new ImageIcon("src\\Images\\Horse1.png"));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\whiteHorse.png"));
         }
         else {
             addingBlackFigures.add(new Horse(x,y));
-            chess[y][x].setIcon(new ImageIcon("src\\Images\\whiteHorse.png"));
+            chess[y][x].setIcon(new ImageIcon("src\\Images\\Horse1.png"));
         }
     }
 }

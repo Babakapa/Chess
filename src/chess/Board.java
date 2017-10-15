@@ -13,11 +13,7 @@ import java.util.LinkedList;
 public class Board extends Chess{
 
 private Icon tempIMG = null;
-
     private static ChessPropreties nameOfTheFigure = null;
-private int castlingX = -1;
-private int castlingY = -1;
-private JPanel panelForSongs = new JPanel();
   private LinkedList<Color> tempList = new LinkedList<>();
 private JPanel panelForChess = new JPanel();
 private JLabel labelForAttack = new Signature();
@@ -65,10 +61,12 @@ for(i = 0;i < chess.length;i++)
                 clearPossibleVariants();
                 white = !white;
                 setKingAttack();
+
+                checkForPawnGetEnd();
                 updateWhiteStrokes();
                 updateBlackStrokes();
+
                 kingAttack();
-                checkForPawnGetEnd();
             } else if (chess[a][b].getIcon() != null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
@@ -93,15 +91,18 @@ for(i = 0;i < chess.length;i++)
                 clearPossibleVariants();
                 white = !white;
                 setKingAttack();
-updateWhiteStrokes();
-updateBlackStrokes();
-kingAttack();
+
 checkForPawnGetEnd();
+                updateWhiteStrokes();
+                updateBlackStrokes();
+
+                kingAttack();
+
             }
         }
     }
 
-    private static void checkForPawnGetEnd() {
+    private void checkForPawnGetEnd() {
         if(nameOfTheFigure.getClass()==Pawn.class && nameOfTheFigure.getY()==7){
 addingFigure = new ChooseYourFigure(nameOfTheFigure,nameOfTheFigure.getX(),nameOfTheFigure.getY());
 nameOfTheFigure.setXAndY(-1,-1);
