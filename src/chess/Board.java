@@ -16,7 +16,7 @@ private Icon tempIMG = null;
     private static ChessPropreties nameOfTheFigure = null;
   private LinkedList<Color> tempList = new LinkedList<>();
 private JPanel panelForChess = new JPanel();
-private JLabel labelForAttack = new Signature();
+
 private int i = 0;
 private int j = 0;
 private static ChooseYourFigure addingFigure = null;
@@ -65,8 +65,8 @@ for(i = 0;i < chess.length;i++)
                 checkForPawnGetEnd();
                 updateWhiteStrokes();
                 updateBlackStrokes();
+kingAttack();
 
-                kingAttack();
             } else if (chess[a][b].getIcon() != null) {
                 clearPossibleVariants();
                 nameOfTheFigure = null;
@@ -95,8 +95,7 @@ for(i = 0;i < chess.length;i++)
 checkForPawnGetEnd();
                 updateWhiteStrokes();
                 updateBlackStrokes();
-
-                kingAttack();
+kingAttack();
 
             }
         }
@@ -114,15 +113,7 @@ nameOfTheFigure.setXAndY(-1,-1);
 
     }
 
-    private void kingAttack() {
-        if(blackKingIsunderAttack){
-            labelForAttack.setText("Black king is under Attack");
-        }
-        else if(whiteKingIsUnderAttack){
-            labelForAttack.setText("White king is under Attack");
-        }
-        else labelForAttack.setText(null);
-    }
+
 
     private void removeFromBoard(int x, int y) {
         if(white){

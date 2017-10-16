@@ -34,9 +34,13 @@ frame.add(buttonForElephant);
 frame.add(buttonForHorse);
 frame.add(buttonForRock);
 buttonForQueen.addActionListener(new Listener());
+buttonForQueen.setFont(new Font("Arial",Font.BOLD,40));
 buttonForElephant.addActionListener(new Listener());
+        buttonForElephant.setFont(new Font("Arial",Font.BOLD,40));
 buttonForHorse.addActionListener(new Listener());
+        buttonForHorse.setFont(new Font("Arial",Font.BOLD,40));
 buttonForRock.addActionListener(new Listener());
+        buttonForRock.setFont(new Font("Arial",Font.BOLD,40));
     }
 
 
