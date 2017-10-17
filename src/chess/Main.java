@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Main {
 private static final int HEIGHT = 500;
-private static final int WIDTH = 500;
+private static final int WIDTH = 1000;
 
     public static void main(String[] args) {
 Board b = new Board();
