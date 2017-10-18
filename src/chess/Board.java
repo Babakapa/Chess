@@ -20,6 +20,9 @@ private static int castlingX = -1;
     private static int castlingY = -1;
     private static int secondCastlingX = -1;
     private static int secondCastlingY = -1;
+   private Color castlingColor = null;
+   private Color secondCastlingColor = null;
+    private LinkedList<Color> redList = new LinkedList<>();
 private int i = 0;
 private int j = 0;
 private static ChooseYourFigure addingFigure = null;
@@ -294,6 +297,45 @@ else {
             }
 
         }
+        // 4 7
+        if(nameOfTheFigure.getFirstStep() && whiteRook1.getFirstStep() && !whiteKingIsUnderAttack){
+                if(!Chess.checkForCorrectness(3,7)){
+                    nameOfTheFigure.setXAndY(3,7);
+                    updateBlackStrokes();
+                    nameOfTheFigure.setXAndY(4,7);
+                    if(!whiteKingIsUnderAttack){
+                        if(!Chess.checkForCorrectness(2,7)){
+                            nameOfTheFigure.setXAndY(2,7);
+                            updateBlackStrokes();
+                            nameOfTheFigure.setXAndY(4,7);
+                            if(!whiteKingIsUnderAttack){
+                                if(!Chess.checkForCorrectness(1,7)){
+                                    secondCastlingX = 2;
+                                    secondCastlingY = 7;
+                                }
+                                else return;
+                            }
+                            else {
+                                whiteKingIsUnderAttack = false;
+                                return;
+                            }
+                        }
+                        else return;
+                    }
+                    else
+                    {
+                        whiteKingIsUnderAttack = false;
+                        return;
+                    }
+
+                }
+                else return;
+
+
+
+
+
+        }
 
 
 
@@ -322,6 +364,44 @@ else {
                 }
 
             }
+
+        }
+        if(nameOfTheFigure.getFirstStep() && blackRook1.getFirstStep() && !blackKingIsunderAttack){
+            if(!Chess.checkForCorrectness(3,0)){
+                nameOfTheFigure.setXAndY(3,0);
+                updateWhiteStrokes();
+                nameOfTheFigure.setXAndY(4,0);
+                if(!blackKingIsunderAttack){
+                    if(!Chess.checkForCorrectness(2,0)){
+                        nameOfTheFigure.setXAndY(2,0);
+                        updateWhiteStrokes();
+                        nameOfTheFigure.setXAndY(4,0);
+                        if(!blackKingIsunderAttack){
+                            if(!Chess.checkForCorrectness(1,0)){
+                                secondCastlingX = 2;
+                                secondCastlingY = 0;
+                            }
+                            else return;
+                        }
+                        else {
+                            blackKingIsunderAttack = false;
+                            return;
+                        }
+                    }
+                    else return;
+                }
+                else
+                {
+                    blackKingIsunderAttack = false;
+                    return;
+                }
+
+            }
+            else return;
+
+
+
+
 
         }
 
@@ -471,51 +551,57 @@ boolean bp = whiteKingIsUnderAttack;
             i--;
         }
     }
+        if(secondCastlingX!=-1){
+            secondCastlingColor = chess[secondCastlingY][secondCastlingX].getBackground();
+            chess[secondCastlingY][secondCastlingX].setBackground(Color.blue);
+        }
+        if(castlingX!=-1){
+            castlingColor = chess[castlingY][castlingX].getBackground();
+            chess[castlingY][castlingX].setBackground(Color.blue);
+        }
         for (int i = 0; i < list.get(2).size(); i++) {
                 tempList.add(chess[list.get(3).get(i)][list.get(2).get(i)].getBackground());
                 chess[list.get(3).get(i)][list.get(2).get(i)].setBackground(Color.red);
             }
-            if(castlingX!=-1){
-        tempList.add(chess[castlingY][castlingX].getBackground());
-        chess[castlingY][castlingX].setBackground(Color.blue);
-            }
+
 
     }
     private void clearPossibleVariants() {
 int i, k = 0;
+
         if(!tempList.isEmpty()) {
-            for (i = 0; i < list.get(0).size(); i++,k++) {
+            for (i = 0; i < list.get(0).size(); i++) {
                 chess[list.get(1).get(i)][list.get(0).get(i)].setBackground(tempList.get(i));
             }
-            k = 0;
-if(castlingY==-1) {
-    while (i < tempList.size()) {
-        chess[list.get(3).get(k)][list.get(2).get(k)].setBackground(tempList.get(i));
-        i++;
-        k++;
-    }
-}
-else{
-    while (i < tempList.size() - 1) {
-        chess[list.get(3).get(k)][list.get(2).get(k)].setBackground(tempList.get(i));
-        i++;
-        k++;
-    }
-    chess[castlingY][castlingX].setBackground(tempList.get(i));
-castlingX = -1;
-castlingY = -1;
-}
 
+            while (i < tempList.size()) {
+                chess[list.get(3).get(k)][list.get(2).get(k)].setBackground(tempList.get(i));
+                k++;
+                i++;
+            }
             tempList.clear();
         }
+
+
+
+
+if (castlingColor!=null){
+        chess[castlingY][castlingX].setBackground(castlingColor);
+        castlingY = -1;
+        castlingX = -1;
+        castlingColor = null;
+}
+        if (secondCastlingColor!=null){
+            chess[secondCastlingY][secondCastlingX].setBackground(secondCastlingColor);
+            secondCastlingX = -1;
+            secondCastlingX = -1;
+            secondCastlingColor = null;
+        }
+
     }
 
 
 
-    private void clearVariants(){
-
-
-    }
 public static Icon checkIcon(int a, int b){
         return chess[b][a].getIcon();
     }

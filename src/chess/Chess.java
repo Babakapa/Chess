@@ -84,8 +84,6 @@ protected static ChessPropreties gettingRightWhiteObject(int x, int y) {
         return whitepawn1;
     if (x == whitepawn2.getX() && y == whitepawn2.getY())
         return whitepawn2;
-    if (x == whitepawn3.getX() && y == whitepawn2.getY())
-        return whitepawn3;
     if (x == whitepawn3.getX() && y == whitepawn3.getY())
         return whitepawn3;
     if (x == whitepawn4.getX() && y == whitepawn4.getY())
