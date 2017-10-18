@@ -11,7 +11,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.*;
+import javazoom.jl.player.advanced.AdvancedPlayer;
+
+
 /**
  * Created by Асус on 09.10.2017.
  */
@@ -21,11 +23,13 @@ public class Music extends JPanel implements ActionListener {
     private JButton[] songs = new JButton[theNamesOfTheSongs.length];
     private File fileSongs[] = new File[theNamesOfTheSongs.length];
 private static Music music;
-private Player player;
 private JButton stop = new JButton("Stop");
 private JPanel panel = new JPanel();
 private JPanel panelForPause = new JPanel();
-private boolean bp = true;
+
+private AdvancedPlayer player ;
+
+
     private Music() {
 
 setLayout(new BorderLayout());
@@ -58,7 +62,9 @@ setLayout(new BorderLayout());
         }
         stop.setFont(new Font("Arial",Font.BOLD,15));
         panelForPause.add(stop);
+
 stop.addActionListener(this);
+
     }
 
     private int makingShortName(int i) {
@@ -77,7 +83,6 @@ stop.addActionListener(this);
         }
 return theNamesOfTheSongs[i].length();
     }
-
     public static Music getInstance(){
         if(music==null){
             music = new Music();
@@ -90,6 +95,7 @@ return theNamesOfTheSongs[i].length();
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==stop){
 t.close();
+
         }
         for (int i = 0; i < theNamesOfTheSongs.length; i++)
 
@@ -98,28 +104,28 @@ if(e.getSource()==songs[i]) {
                 t.close();
             }
     t = new thread();
-
         t.s = theNamesOfTheSongs[i];
         t.start();
-
-
     break;
     }
 
     }
 private class thread extends Thread{
-        private int currentTime = 0;
+
         private String s;
-        private boolean paused = false;
+
         private void play() throws JavaLayerException, FileNotFoundException {
             BufferedInputStream buffer = new BufferedInputStream(
                     new FileInputStream("src\\Music\\" + s));
-            player = new Player(buffer);
+
+            player = new AdvancedPlayer(buffer);
+
                     player.play();
         }
         @Override
         public void run(){
             try {
+
                 play();
             } catch (JavaLayerException e) {
                 e.printStackTrace();

@@ -1,10 +1,12 @@
 package chess;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.WindowConstants;
 /**
  * Created by Асус on 09.10.2017.
  */

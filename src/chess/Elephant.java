@@ -6,7 +6,6 @@ import java.util.LinkedList;
 public class Elephant extends ChessPropreties implements DiagonalMove{
     private int i;
     private int j;
-   // private int tempX, tempY;
 public Elephant(int x, int y){
     setXAndY(x,y);
 }
